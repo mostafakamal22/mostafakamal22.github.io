@@ -4,7 +4,7 @@
     --var-bg-secodary:  #072227;
     --var-color-primary:  #072227;
     --var-color-secodary: #AEFEFF;
-    --var-selection-color: hsl(2, 76%, 35%);
+    --var-selection-color: hsl(2, 76%, 50%);
     --var-brand-font: 'Dancing Script', cursive;
     --var-main-font: 'Mochiy Pop P One', sans-serif;
     --var-thin-font: 'Rajdhani', sans-serif;
@@ -167,6 +167,12 @@ figcaption a:hover{
     z-index: 3;
     min-height: 4rem;
     align-items: initial;
+    transition: 300ms ease-in-out;
+}
+
+.navbar-active{
+    background-color: var(--var-bg-primary);
+    box-shadow: 0 0 .25rem var(--var-bg-secodary);
 }
 
 #navbar-header{
@@ -193,6 +199,7 @@ figcaption a:hover{
     justify-content: space-around;
     flex-wrap: wrap;
 }
+
 .nav-item{
     display: flex;
     align-items: center;
@@ -200,8 +207,9 @@ figcaption a:hover{
     padding: .5rem .5rem;
 }
 
-.nav-item:hover .nav-link{
+.nav-item:hover .nav-link, .nav-item:focus .nav-link{
     color: var(--var-color-secodary);
+    text-decoration: underline;
 }
 
 
@@ -230,6 +238,7 @@ figcaption a:hover{
 /* aside style */ 
 aside{
     position: fixed;
+    visibility: hidden;
     top: 0;
     left: 0;
     z-index: 3;
@@ -238,11 +247,13 @@ aside{
     padding: 1rem;
     height: 75vh;
     width: 75vw;
+    background-image: url('/img/backgrounds/blob-scene.svg');
+    background-position: center;
+    background-size: cover;
     border-right: .125rem solid var(--var-color-secodary);
     border-bottom: .125rem solid var(--var-color-secodary);
     border-bottom-right-radius: .25rem;
     box-shadow: 0 0 .5rem var(--var-bg-primary);
-    visibility: hidden;
     transition:  200ms ease-in-out;
     -moz-transition:  200ms ease-in-out; /* Firefox 4 */
     -webkit-transition:  200ms ease-in-out; /* Safari and Chrome */
@@ -252,11 +263,12 @@ aside{
 #close{
     margin: .25rem .25rem 1rem auto;
 }
+
 #my-pic-wrapper{
+    align-self: center;
     width: 6rem;
     height: 8rem;
-    align-self: center;
-    padding: .5rem; 
+    padding: .5rem;   
 }
 
 #aside-nav-list > .nav-item + .nav-item {
@@ -468,10 +480,6 @@ footer{
     }    
 
     /* navbar and aside */ 
-    #navbar{
-        background-color: var(--var-bg-primary);
-        box-shadow: 0 0 .25rem var(--var-bg-secodary);
-    }
 
     #open{
         display: none;
