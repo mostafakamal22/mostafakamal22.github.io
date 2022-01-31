@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Mochiy+Pop+P+One&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400&display=swap" rel="stylesheet"> 
+    <script src="https://kit.fontawesome.com/850d93f4db.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="icon" href="/img/tab-icon.png">
+    <title>MK WebDev</title>
+</head>
+<body>
+    <div class="container-full">
+        <div class="content-container" id="navbar">
+            <header id="navbar-header">   
+                <a href="#" title="Home" class="brand-font text-primary" id="brand">MK WebDev</a>
+                <nav id="nav-container">
+                    <ul id="nav-list">
+                        <li class="nav-item"><a href="#about" class="nav-link text-primary">About</a></li>
+                        <li class="nav-item"><a href="#my-work" class="nav-link text-primary">MyWork</a></li>  
+                        <li class="nav-item"><a href="#contact" class="nav-link text-primary">Contact</a></li>      
+                    </ul>
+                </nav>
+            </header>
+
+            <button class="toggle-btn bg-secondary text-secondary" id="open">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <aside class="bg-secondary">
+            <button class="toggle-btn bg-secondary text-secondary" id="close" style="float: right;">
+                <i class="fas fa-times"></i>
+            </button>
+            <figure id="my-pic-wrapper">
+                <img class="my-images" src="img/mypic.jpg" alt="my personal picture">
+            </figure>
+            <nav id="aside-nav">
+                <ul id="aside-nav-list">
+                    <li class="nav-item" title="home"><a href="#" style="font-size: 1.2rem;" class="brand-font nav-link text-secondary">MK WebDev</a></li>
+                    <li class="nav-item" title="about me"><a href="#about" class="nav-link text-secondary">About</a></li>
+                    <li class="nav-item" title="my work"><a href="#my-work" class="nav-link text-secondary">MyWork</a></li>  
+                    <li class="nav-item" title="contact me"><a href="#contact" class="nav-link text-secondary">Contact</a></li>      
+                </ul>
+            </nav>
+        </aside>
+
+
+        <section id="about" class="bg-primary">
+            <div class="content-container">
+                <div id="about-wrapper">
+                    <header id="about-header">
+                        <h4>Hi, I am Mostafa</h4>
+                        <h1>I am a Junior Front End Web  Developer</h1>
+                    </header>
+                    <figure id="about-details">
+                        <img class="my-images" src="img/backgrounds/programming.svg" alt="Web programming">
+                        <p class="thin-font bg-primary-transparent text-secondary">I use different technologies like (Html5, css3, Javascript, React.js, Node.js, etc..)
+                            to make Modern and Fast webPages.</p>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="spacer layer"></div>
+
+            <div class="curve">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+                </svg>
+            </div>
+        </section>
+
+        <section id="my-work" class="bg-primary">
+            <div class="content-container" id="mywork-container">
+                <header class="section-header">
+                    <h4>This is My Stuff...</h4>
+                </header>
+                <ul id="mywork-wrapper">
+                    <li class="mywork-item">
+                        <figure class="mywork-figure">
+                            <img class="my-images  mywork-img" src="img/projects/would-you-rather.png" alt="example of my work">
+                            <figcaption>
+                                <p>Would you Rather Game</p>
+                                <ul>
+                                    <li>Used technologies & tools:-</li>
+                                    <li>-HTML</li>
+                                    <li>-CSS[bootstrap]</li>
+                                    <li>-JavaScript[react.js]</li>
+                                    <li><a href="https://mostafakamal22.github.io/would-you-rather-starter/" target="_blank">Live Demo<i class="fas fa-external-link-square-alt"></i></a></li>
+                                </ul>
+                            </figcaption>
+                        </figure>
+                    </li>
+
+                    <li class="mywork-item">
+                        <figure class="mywork-figure">
+                            <img class="my-images  mywork-img" src="img/projects/react-calculator.png" alt="example of my work">
+                            <figcaption>
+                                <p>React Calculator App</p>
+                                <ul>
+                                    <li>Used technologies & tools:-</li>
+                                    <li>-HTML</li>
+                                    <li>-CSS[bootstrap]</li>
+                                    <li>-JavaScript[react.js]</li>
+                                    <li><a href="https://mostafakamal22.github.io/react-calculator/" target="_blank">Live Demo<i class="fas fa-external-link-square-alt"></i></a></li>
+                                </ul>
+                            </figcaption>
+                        </figure>
+                    </li>
+
+                    <li class="mywork-item">
+                        <figure class="mywork-figure">
+                            <img class="my-images  mywork-img" src="img/projects/drum-machine.png" alt="example of my work">
+                            <figcaption>
+                                <p>Drum Machine Game</p>
+                                <ul>
+                                    <li>Used technologies & tools:-</li>
+                                    <li>-HTML</li>
+                                    <li>-CSS[bootstrap]</li>
+                                    <li>-JavaScript[react.js]</li>
+                                    <li><a href="https://mostafakamal22.github.io/drum-machine/" target="_blank">Live Demo<i class="fas fa-external-link-square-alt"></i></a></li>
+                                </ul>
+                            </figcaption>
+                        </figure>
+                    </li>
+
+                    <li class="mywork-item">
+                        <figure class="mywork-figure">
+                            <img class="my-images  mywork-img" src="img/projects/random-quote.png" alt="example of my work">
+                            <figcaption>
+                                <p>Random Quote App</p>
+                                <ul>
+                                    <li>Used technologies & tools:-</li>
+                                    <li>-HTML</li>
+                                    <li>-CSS[bootstrap]</li>
+                                    <li>-JavaScript[react.js, fetch API]</li>
+                                    <li><a href="https://mostafakamal22.github.io/random-quote-machine/" target="_blank">Live Demo<i class="fas fa-external-link-square-alt"></i></a></li>
+                                </ul>
+                            </figcaption>
+                        </figure>
+                    </li>
+
+                    <li class="mywork-item">
+                        <figure class="mywork-figure">
+                            <img class="my-images mywork-img" src="img/projects/coming-soon-shop.png" alt="example of my work ">
+                            <figcaption>
+                                <p>Coming Soon Shop</p>
+                                <ul>
+                                    <li>Used technologies & tools:-</li>
+                                    <li>-HTML</li>
+                                    <li>-CSS</li>
+                                    <li>-JavaScript</li>
+                                    <li><a href="https://mostafakamal22.github.io/coming-soon-shop/" target="_blank">Live Demo<i class="fas fa-external-link-square-alt"></i></a></li>
+                                </ul>
+                            </figcaption>
+                        </figure>
+                    </li>
+
+                    <li class="mywork-item">
+                        <figure class="mywork-figure">
+                            <img class="my-images  mywork-img" src="img/projects/25-5-clock.png" alt="example of my work">
+                            <figcaption>
+                                <p>25-5 Break Clock</p>
+                                <ul>
+                                    <li>Used technologies & tools:-</li>
+                                    <li>-HTML</li>
+                                    <li>-CSS [TailWind]</li>
+                                    <li>-JavaScript [React.js]</li>
+                                    <li><a href="https://mostafakamal22.github.io/25-5-clock/" target="_blank">Live Demo<i class="fas fa-external-link-square-alt"></i></a></li>
+                                </ul>
+                            </figcaption>
+                        </figure>
+                    </li>
+
+                    <li class="mywork-item">
+                        <figure class="mywork-figure">
+                            <img class="my-images  mywork-img" src="img/projects/landing-page.png" alt="example of my work">
+                            <figcaption>
+                                <p>Landing Page</p>
+                                <ul>
+                                    <li>Used technologies & tools:-</li>
+                                    <li>-HTML</li>
+                                    <li>-CSS</li>
+                                    <li>-JavaScript</li>
+                                    <li><a href="https://mostafakamal22.github.io/landing-page/" target="_blank">Live Demo<i class="fas fa-external-link-square-alt"></i></a></li>
+                                </ul>
+                            </figcaption>
+                        </figure>
+                    </li>
+
+                   
+                </ul>
+            </div>
+        </section>
+
+        <section id="contact" class="bg-secondary">
+            <div class="content-container" id="contact-container">
+                <header class="section-header">
+                    <h4>Let's Work Together</h4>
+                </header>
+
+                <ul class="contact-list">
+                    <li class="contact-item" title="Github">
+                        <a href="https://github.com/mostafakamal22" class="contact-link text-secondary" target="_blank">
+                            <i class="fab fa-github-square"></i>
+                        </a>
+                    </li>
+                    <li class="contact-item" title="Linkedin">
+                        <a href="https://www.linkedin.com/in/mostafakamal22/" class="contact-link text-secondary" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </li>
+                    <li class="contact-item" title="Send Email">
+                        <a href="mailto: mk1319@fayoum.edu.eg" class="contact-link text-secondary" target="_blank">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </li>
+                    <li class="contact-item" title="Whatsapp">
+                        <a href="https://wa.me/201008871950" class="contact-link text-secondary" target="_blank">
+                            <i class="fab fa-whatsapp-square"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="bg-secondary text-secondary">
+            <div class="content-container" id="footer-container">
+               <p>Designed and Developed By <span>Mostafa Kamal</span> @2022.</p> 
+            </div>
+        </footer>
+    </div>
+    
+    <script src="/scripts/scripts.js"></script>
+</body>
+</html>
