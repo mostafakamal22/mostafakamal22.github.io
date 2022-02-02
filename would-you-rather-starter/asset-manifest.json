@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/would-you-rather-starter/static/css/main.02327d35.chunk.css",
-    "main.js": "/would-you-rather-starter/static/js/main.5d0af261.chunk.js",
-    "main.js.map": "/would-you-rather-starter/static/js/main.5d0af261.chunk.js.map",
+    "main.css": "/would-you-rather-starter/static/css/main.48e8a795.chunk.css",
+    "main.js": "/would-you-rather-starter/static/js/main.36979d3e.chunk.js",
+    "main.js.map": "/would-you-rather-starter/static/js/main.36979d3e.chunk.js.map",
     "runtime-main.js": "/would-you-rather-starter/static/js/runtime-main.c870300c.js",
     "runtime-main.js.map": "/would-you-rather-starter/static/js/runtime-main.c870300c.js.map",
     "static/css/2.383c0125.chunk.css": "/would-you-rather-starter/static/css/2.383c0125.chunk.css",
@@ -10,7 +10,7 @@
     "static/js/2.fa4bb1d2.chunk.js.map": "/would-you-rather-starter/static/js/2.fa4bb1d2.chunk.js.map",
     "index.html": "/would-you-rather-starter/index.html",
     "static/css/2.383c0125.chunk.css.map": "/would-you-rather-starter/static/css/2.383c0125.chunk.css.map",
-    "static/css/main.02327d35.chunk.css.map": "/would-you-rather-starter/static/css/main.02327d35.chunk.css.map",
+    "static/css/main.48e8a795.chunk.css.map": "/would-you-rather-starter/static/css/main.48e8a795.chunk.css.map",
     "static/js/2.fa4bb1d2.chunk.js.LICENSE.txt": "/would-you-rather-starter/static/js/2.fa4bb1d2.chunk.js.LICENSE.txt",
     "static/media/first-place.a3189a9d.png": "/would-you-rather-starter/static/media/first-place.a3189a9d.png",
     "static/media/icon1.44556e00.png": "/would-you-rather-starter/static/media/icon1.44556e00.png",
@@ -27,7 +27,7 @@
     "static/js/runtime-main.c870300c.js",
     "static/css/2.383c0125.chunk.css",
     "static/js/2.fa4bb1d2.chunk.js",
-    "static/css/main.02327d35.chunk.css",
-    "static/js/main.5d0af261.chunk.js"
+    "static/css/main.48e8a795.chunk.css",
+    "static/js/main.36979d3e.chunk.js"
   ]
 }
