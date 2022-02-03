@@ -231,7 +231,7 @@ figcaption a:hover{
 }
 
 #open{
-    margin: auto auto auto .5rem;
+    margin: auto auto auto 1rem;
     z-index: 3;
 }
 
