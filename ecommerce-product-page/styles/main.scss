@@ -1,0 +1,14 @@
+//abstracts
+@import "abstracts/variables";
+
+// base
+@import "base/typography", "base/common", "base/animation", "base/mixins";
+
+// Pages
+@import "pages/home";
+
+//Components
+@import "components/buttons", "components/cart", "components/carousel",
+  "components/product", "components/modal";
+// Layouts
+@import "layout/navbar", "layout/footer";

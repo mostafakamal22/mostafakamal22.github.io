@@ -1,0 +1,83 @@
+.btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border: 0.125rem solid transparent;
+  border-radius: 0.25rem;
+}
+
+.btn:active,
+.btn:focus,
+.btn:hover {
+  border-color: $Orange;
+}
+
+.btn-menu {
+  display: block;
+  margin-top: 0.5rem;
+  @media screen and (min-width: $large-laptops-desktops) {
+    display: none;
+  }
+}
+
+.btn-close {
+  margin-bottom: 1.5rem;
+}
+
+.cart-btn {
+  position: relative;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-top: 0.25rem;
+}
+
+.btn-minus:hover,
+.btn-plus:hover {
+  border-color: transparent;
+}
+
+.btn-minus {
+  margin-right: auto;
+}
+.btn-plus {
+  margin-left: auto;
+}
+
+.product-count {
+  font-weight: $font-weight-700;
+}
+
+.btn-add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+  padding: 1rem;
+  background: $Orange;
+  border-radius: 0.5rem;
+  color: $White;
+  border: none;
+  @include box-shadow(0, 1rem, 3rem, $Orange);
+  @media screen and (min-width: $large-laptops-desktops) {
+    flex-basis: 60%;
+  }
+}
+
+.btn-add:hover,
+.btn-add:focus,
+.btn-add:active {
+  opacity: 0.7;
+}
+
+.btn-add:disabled {
+  cursor: not-allowed;
+}
+
+.btn-add > span {
+  font-size: 0.9rem;
+  font-weight: $font-weight-700;
+}

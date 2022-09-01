@@ -1,0 +1,58 @@
+.prices-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  margin: 1rem 0;
+  @media screen and (min-width: $large-laptops-desktops) {
+    flex-wrap: wrap;
+  }
+}
+
+.price-after {
+  font-size: 1.8rem;
+  font-weight: $font-weight-700;
+}
+
+.price-discount {
+  font-weight: $font-weight-700;
+  padding: 0.3rem;
+  color: $Orange;
+  background: $Orange_Pale;
+  border-radius: 0.3rem;
+}
+
+.price-before {
+  font-weight: $font-weight-700;
+  color: $Grayish-blue;
+  text-decoration: line-through;
+  margin-left: auto;
+  @media screen and (min-width: $large-laptops-desktops) {
+    flex-basis: 100%;
+  }
+}
+
+.add-to-cart {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  @media screen and (min-width: $large-laptops-desktops) {
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
+
+.add-to-cart-control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  background: $Light-grayish-blue;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  border-radius: 0.5rem;
+  @media screen and (min-width: $large-laptops-desktops) {
+    flex-basis: 30%;
+  }
+}
