@@ -130,6 +130,18 @@ h2 {
   border-radius: 99rem;
 }
 
+.list-group-item {
+  position: relative;
+}
+
+.check-group {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+}
+
 /* Dark/Light model toggle */
 .toggle {
   position: fixed;
@@ -142,10 +154,6 @@ h2 {
   border-top-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
 }
-
-/* .toggle:hover {
-  right: 0;
-} */
 
 .toggle-dark,
 .toggle-light {

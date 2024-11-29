@@ -111,7 +111,7 @@
         <div class="overflow-x-auto">
           <table
             id="bookmark-table"
-            class="table table-striped overflow-x-scroll shadow-sm"
+            class="table table-striped overflow-x-scroll rounded-5"
           >
             <thead>
               <tr>
@@ -240,15 +240,32 @@
             <ul class="list-group mb-3">
               <li class="list-group-item">
                 <i class="fa-regular fa-circle-right me-1"></i>
-                Site name must be unique
+                <span>Site name must contain at least 3 characters</span>
+
+                <div class="check-group">
+                  <i class="fa-solid fa-circle-xmark text-danger length"></i>
+                  <i class="fa-solid fa-circle-check text-success length"></i>
+                </div>
               </li>
+
               <li class="list-group-item">
                 <i class="fa-regular fa-circle-right me-1"></i>
-                Site name must contain at least 3 characters
+                <span>Site name must be unique</span>
+
+                <div class="check-group">
+                  <i class="fa-solid fa-circle-xmark text-danger unique"></i>
+                  <i class="fa-solid fa-circle-check text-success unique"></i>
+                </div>
               </li>
+
               <li class="list-group-item">
                 <i class="fa-regular fa-circle-right me-1"></i>
-                Site URL must be a valid one
+                <span>Site URL must be a valid one</span>
+
+                <div class="check-group">
+                  <i class="fa-solid fa-circle-xmark text-danger url"></i>
+                  <i class="fa-solid fa-circle-check text-success url"></i>
+                </div>
               </li>
             </ul>
 

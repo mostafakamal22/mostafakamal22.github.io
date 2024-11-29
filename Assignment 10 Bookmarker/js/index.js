@@ -13,6 +13,24 @@ var alertContainer = document.getElementById("alert");
 var BookmarksValidationModal = new bootstrap.Modal(
   document.getElementById("BookmarksValidationModal")
 );
+var uniqueInvalidIcon = document.querySelector(
+  ".check-group .fa-circle-xmark.unique"
+);
+var uniqueValidIcon = document.querySelector(
+  ".check-group .fa-circle-check.unique"
+);
+
+var lengthInvalidIcon = document.querySelector(
+  ".check-group .fa-circle-xmark.length"
+);
+var lengthValidIcon = document.querySelector(
+  ".check-group .fa-circle-check.length"
+);
+
+var urlInvalidIcon = document.querySelector(
+  ".check-group .fa-circle-xmark.url"
+);
+var urlValidIcon = document.querySelector(".check-group .fa-circle-check.url");
 
 var updateBookmarkModal = new bootstrap.Modal(
   document.getElementById("updateBookmark")
@@ -304,8 +322,17 @@ function validateBookmark(input) {
   // validate bookmark name
   if (input.id === "siteName" || input.id === "updateSiteName") {
     if (!input?.value || input?.value?.trim()?.length < 3) {
+      // update input state
       input.classList.add("is-invalid");
       input.classList.remove("invalid");
+
+      // update check icons
+      if (!input?.value) {
+        manageCheckIcons("empty-name");
+      } else {
+        manageCheckIcons("length");
+      }
+
       return false;
     }
 
@@ -331,15 +358,25 @@ function validateBookmark(input) {
             );
 
     if (isDuplicatedBookmarkName) {
+      // update input state
       input.classList.add("is-invalid");
       input.classList.remove("is-valid");
+
+      // update check icons
+      manageCheckIcons("unique");
+
       return false;
     }
   } else {
     // Validate bookmark URL
     if (!input?.value || !isValidURL(input?.value?.trim())) {
+      // update input state
       input.classList.add("is-invalid");
       input.classList.remove("is-valid");
+
+      // update check icons
+      manageCheckIcons("url");
+
       return false;
     }
   }
@@ -393,4 +430,50 @@ function clearSearchQuery() {
 function showToast(message) {
   toastBody.innerHTML = message;
   toastBootstrap.show();
+}
+
+// Mange checks icons in validation modal
+function manageCheckIcons(invalidationType) {
+  switch (invalidationType) {
+    case "empty-name":
+      uniqueInvalidIcon.classList.remove("d-none");
+      lengthInvalidIcon.classList.remove("d-none");
+
+      uniqueValidIcon.classList.add("d-none");
+      lengthValidIcon.classList.add("d-none");
+      urlInvalidIcon.classList.add("d-none");
+      urlValidIcon.classList.add("d-none");
+      break;
+
+    case "length":
+      lengthInvalidIcon.classList.remove("d-none");
+
+      uniqueValidIcon.classList.add("d-none");
+      uniqueInvalidIcon.classList.add("d-none");
+      lengthValidIcon.classList.add("d-none");
+      urlInvalidIcon.classList.add("d-none");
+      urlValidIcon.classList.add("d-none");
+      break;
+
+    case "unique":
+      uniqueInvalidIcon.classList.remove("d-none");
+      lengthValidIcon.classList.remove("d-none");
+
+      uniqueValidIcon.classList.add("d-none");
+      lengthInvalidIcon.classList.add("d-none");
+      urlInvalidIcon.classList.add("d-none");
+      urlValidIcon.classList.add("d-none");
+      break;
+
+    //Invalid URL
+    default:
+      urlInvalidIcon.classList.remove("d-none");
+      lengthValidIcon.classList.remove("d-none");
+      uniqueValidIcon.classList.remove("d-none");
+
+      uniqueInvalidIcon.classList.add("d-none");
+      lengthInvalidIcon.classList.add("d-none");
+      urlValidIcon.classList.add("d-none");
+      break;
+  }
 }
