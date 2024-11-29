@@ -40,6 +40,10 @@ h1,
   font-family: "Pacifico", cursive;
 }
 
+.main-title {
+  user-select: none;
+}
+
 .main-title::after {
   content: "";
   position: absolute;
@@ -139,9 +143,9 @@ h2 {
   border-bottom-right-radius: 0 !important;
 }
 
-.toggle:hover {
+/* .toggle:hover {
   right: 0;
-}
+} */
 
 .toggle-dark,
 .toggle-light {

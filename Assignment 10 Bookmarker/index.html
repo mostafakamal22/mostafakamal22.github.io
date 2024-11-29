@@ -217,11 +217,12 @@
       >
         <div class="modal-content">
           <div class="modal-header">
-            <div class="d-flex gap-2">
+            <div class="d-flex gap-2 me-3">
               <span class="circle bg-danger"></span>
               <span class="circle bg-warning"></span>
               <span class="circle bg-success"></span>
             </div>
+            <h5 class="modal-title fs-5 modal-heading">Invalid inputs</h5>
             <button
               type="button"
               class="btn ms-auto close"
@@ -236,23 +237,23 @@
               Site Name or Url is not valid, Please follow the rules below:
             </h6>
 
-            <p>
-              <i class="fa-regular fa-circle-right p-2"></i>
-              Site name must be unique
-            </p>
-
-            <p>
-              <i class="fa-regular fa-circle-right p-2"></i>
-              Site name must contain at least 3 characters
-            </p>
-
-            <p>
-              <i class="fa-regular fa-circle-right p-2"></i>
-              Site URL must be a valid one
-            </p>
+            <ul class="list-group mb-3">
+              <li class="list-group-item">
+                <i class="fa-regular fa-circle-right me-1"></i>
+                Site name must be unique
+              </li>
+              <li class="list-group-item">
+                <i class="fa-regular fa-circle-right me-1"></i>
+                Site name must contain at least 3 characters
+              </li>
+              <li class="list-group-item">
+                <i class="fa-regular fa-circle-right me-1"></i>
+                Site URL must be a valid one
+              </li>
+            </ul>
 
             <div>
-              <h6 class="mb-2 fw-semibold">💡 Tips</h6>
+              <h6 class="mb-2 fw-semibold">💡 URLs Tips</h6>
               <ul class="list-group mb-3">
                 <li class="list-group-item">
                   Add <strong>http://</strong> or <strong>https://</strong> if
@@ -266,7 +267,7 @@
                 </li>
               </ul>
 
-              <h6 class="text-primary mb-2 fw-semibold">✅ Valid URLs</h6>
+              <h6 class="mb-2 fw-semibold">✅ Valid URLs</h6>
               <ul class="list-group mb-3">
                 <li class="list-group-item">http://example.com</li>
                 <li class="list-group-item">https://www.example.org</li>
@@ -277,7 +278,7 @@
                 </li>
               </ul>
 
-              <h6 class="text-danger mb-2 fw-semibold">❌ Invalid URLs</h6>
+              <h6 class="mb-2 fw-semibold">❌ Invalid URLs</h6>
               <ul class="list-group mb-3">
                 <li class="list-group-item">
                   <strong>example</strong> → Missing protocol/TLD
