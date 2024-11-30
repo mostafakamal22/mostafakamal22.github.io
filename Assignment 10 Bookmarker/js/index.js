@@ -78,6 +78,10 @@ function addNewBookmark() {
   // Clear search query
   clearSearchQuery();
 
+  // Set inputs back to initial state
+  resetToInitialState(bookmarkNameInput);
+  resetToInitialState(bookmarkUrlInput);
+
   // Show success Toast
   showToast("New bookmark added.");
 
@@ -314,6 +318,11 @@ function getBookmarks() {
   return [];
 }
 
+// Set Bookmarks data to local storage
+function setBookmarks(bookmarks) {
+  localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+}
+
 // Validate Bookmark data inputs
 function validateBookmark(input) {
   // Get bookmarks data
@@ -387,11 +396,6 @@ function validateBookmark(input) {
   return true;
 }
 
-// Set Bookmarks data to local storage
-function setBookmarks(bookmarks) {
-  localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
-}
-
 // Validate URL
 function isValidURL(url) {
   var urlPattern =
@@ -425,6 +429,15 @@ function clearForm() {
 function clearSearchQuery() {
   bookmarkQueryInput.value = null;
 }
+
+// Reset input to initial state
+function resetToInitialState(input) {
+  input.classList.remove("is-valid", "is-invalid");
+}
+
+// Example usage:
+const input = document.querySelector("#siteName");
+resetToInitialState(input);
 
 // Show custom toast
 function showToast(message) {
