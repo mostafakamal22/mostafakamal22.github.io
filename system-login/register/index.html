@@ -30,7 +30,9 @@
     <!-- Main content -->
     <main>
       <section class="min-vh-100 background-radial-gradient overflow-hidden">
-        <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+        <div
+          class="container px-4 py-5 px-md-5 text-center text-lg-start my-0 my-md-5"
+        >
           <div class="row gx-lg-5 align-items-center mb-5">
             <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
               <h1
@@ -58,10 +60,13 @@
                 class="position-absolute shadow-5-strong"
               ></div>
 
-              <div class="card bg-glass">
+              <div class="card bg-glass text-start">
                 <div class="card-body px-4 py-5 px-md-5">
                   <form>
-                    <label class="form-label" for="name">Name</label>
+                    <label class="form-label" for="name">
+                      <i class="fa-solid fa-user me-1"></i>
+                      Name</label
+                    >
                     <div class="form-outline mb-4">
                       <input
                         type="text"
@@ -72,8 +77,9 @@
                     </div>
 
                     <div class="form-outline mb-4">
-                      <label class="form-label" for="email"
-                        >Email address</label
+                      <label class="form-label" for="email">
+                        <i class="fa-solid fa-envelope me-1"></i>
+                        Email address</label
                       >
                       <input
                         type="email"
@@ -84,7 +90,10 @@
                     </div>
 
                     <div class="form-outline mb-4">
-                      <label class="form-label" for="password">Password</label>
+                      <label class="form-label" for="password">
+                        <i class="fa-solid fa-lock me-1"></i>
+                        Password</label
+                      >
                       <input
                         type="password"
                         id="password"
@@ -93,10 +102,10 @@
                       />
                     </div>
 
-                    <!-- Submit button -->
                     <button
-                      type="submit"
-                      class="btn btn-primary btn-block mb-4"
+                      type="button"
+                      class="btn btn-primary btn-block mb-4 w-100"
+                      id="register"
                     >
                       Sign up
                     </button>
@@ -115,143 +124,6 @@
         </div>
       </section>
     </main>
-    <!-- Bookmark validation modal -->
-    <!-- <div
-      class="modal fade"
-      id="BookmarksValidationModal"
-      tabindex="-1"
-      aria-labelledby="BookmarksValidationModal"
-      aria-hidden="true"
-    >
-      <div
-        class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable"
-      >
-        <div class="modal-content">
-          <div class="modal-header">
-            <div class="d-flex gap-2 me-3">
-              <span class="circle bg-danger"></span>
-              <span class="circle bg-warning"></span>
-              <span class="circle bg-success"></span>
-            </div>
-            <h5 class="modal-title fs-5 modal-heading">Invalid inputs</h5>
-            <button
-              type="button"
-              class="btn ms-auto close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            >
-              <i class="fa-solid fa-xmark"></i>
-            </button>
-          </div>
-          <div class="modal-body">
-            <h6 class="fw-bold mb-4">
-              Site Name or Url is not valid, Please follow the rules below:
-            </h6>
-
-            <ul class="list-group mb-3">
-              <li class="list-group-item">
-                <i class="fa-regular fa-circle-right me-1"></i>
-                <span>Site name must contain at least 3 characters</span>
-
-                <div class="check-group">
-                  <i class="fa-solid fa-circle-xmark text-danger length"></i>
-                  <i class="fa-solid fa-circle-check text-success length"></i>
-                </div>
-              </li>
-
-              <li class="list-group-item">
-                <i class="fa-regular fa-circle-right me-1"></i>
-                <span>Site name must be unique</span>
-
-                <div class="check-group">
-                  <i class="fa-solid fa-circle-xmark text-danger unique"></i>
-                  <i class="fa-solid fa-circle-check text-success unique"></i>
-                </div>
-              </li>
-
-              <li class="list-group-item">
-                <i class="fa-regular fa-circle-right me-1"></i>
-                <span>Site URL must be a valid one</span>
-
-                <div class="check-group">
-                  <i class="fa-solid fa-circle-xmark text-danger url"></i>
-                  <i class="fa-solid fa-circle-check text-success url"></i>
-                </div>
-              </li>
-            </ul>
-
-            <div>
-              <h6 class="mb-2 fw-semibold">💡 URLs Tips</h6>
-              <ul class="list-group mb-3">
-                <li class="list-group-item">
-                  Add <strong>http://</strong> or <strong>https://</strong> if
-                  unsure.
-                </li>
-                <li class="list-group-item">
-                  Use <strong>www.</strong> for domains that need it.
-                </li>
-                <li class="list-group-item">
-                  Avoid spaces and special characters.
-                </li>
-              </ul>
-
-              <h6 class="mb-2 fw-semibold">✅ Valid URLs</h6>
-              <ul class="list-group mb-3">
-                <li class="list-group-item">http://example.com</li>
-                <li class="list-group-item">https://www.example.org</li>
-                <li class="list-group-item">www.subdomain.site</li>
-                <li class="list-group-item">example.net/path/to/page</li>
-                <li class="list-group-item">
-                  https://example.com/resource?id=123
-                </li>
-              </ul>
-
-              <h6 class="mb-2 fw-semibold">❌ Invalid URLs</h6>
-              <ul class="list-group mb-3">
-                <li class="list-group-item">
-                  <strong>example</strong> → Missing protocol/TLD
-                </li>
-                <li class="list-group-item">
-                  <strong>http:/example.com</strong> → Malformed protocol
-                </li>
-                <li class="list-group-item">
-                  <strong>www.example .com</strong> → Contains a space
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
-
-    <!-- Toast -->
-    <!-- <div class="toast-container position-fixed top-0 end-0 p-3">
-      <div
-        id="toast"
-        class="toast text-bg-success"
-        role="alert"
-        aria-live="assertive"
-        aria-atomic="true"
-      >
-        <div class="toast-header">
-          <img
-            src="../images/bookmark.png"
-            class="rounded me-2"
-            style="width: 25px"
-            alt="bookmark"
-          />
-          <strong class="me-auto">Bookmarker</strong>
-
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="toast"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="toast-body" id="toast-body"></div>
-      </div>
-    </div> -->
 
     <!-- Bootstrap Scripts -->
     <script src="../js/bootstrap.bundle.min.js"></script>
@@ -265,5 +137,8 @@
 
     <!-- Auth Script -->
     <script src="../js/checkAuth.js"></script>
+
+    <!-- Register Script -->
+    <script src="./js/register.js"></script>
   </body>
 </html>

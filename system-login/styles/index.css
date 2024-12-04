@@ -21,8 +21,6 @@
 /* Re-setting Styles */
 body {
   font-family: "PT Sans Caption", sans-serif;
-  background: var(--bg-primary);
-  color: var(--text-color-primary);
   overflow-x: hidden;
 }
 
@@ -55,14 +53,6 @@ h1 {
   outline: 0;
   box-shadow: none;
   opacity: 0.9;
-}
-
-.close {
-  color: var(--text-color-primary);
-}
-
-.close:hover {
-  color: var(--text-color-primary);
 }
 
 /* Background styles */

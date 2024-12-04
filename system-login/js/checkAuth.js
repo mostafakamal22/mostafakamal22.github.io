@@ -2,22 +2,22 @@
 function checkAuth() {
   // Get authed user from local storage
   var authedUser = localStorage.getItem("authedUser");
+  console.log({ authedUser });
+  var location = window.location.pathname;
+  console.log({ location });
 
   if (!authedUser) {
-    var location = window.location.pathname;
-    console.log(location);
-
-    if (location === "/" || location === "/index.html") {
-      //   window.location.assign("/home");
+    // Prevent Not authed users from going homepage
+    if (location === "/home/") {
+      console.log("prevent not authed");
+      window.location.assign("/");
     }
-    // switch (key) {
-    //     case value:
-
-    //         break;
-
-    //     default:
-    //         break;
-    // }
+  } else {
+    // Prevent authed user from going to login/register pages
+    if (location !== "/home/" && location !== "/home") {
+      console.log("prevent authed");
+      window.location.assign("/home");
+    }
   }
 }
 
