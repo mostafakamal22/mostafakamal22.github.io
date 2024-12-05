@@ -10,5 +10,5 @@ function handleLogout() {
   localStorage.setItem("authedUser", "");
 
   //Navigate user to login page
-  location.assign("/");
+  location.assign(basePath("/"));
 }

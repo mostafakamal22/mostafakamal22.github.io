@@ -33,5 +33,5 @@ function handleLogin() {
   localStorage.setItem("authedUser", foundUser.name);
 
   // Login user
-  location.assign("/home");
+  location.assign(basePath("/home"));
 }

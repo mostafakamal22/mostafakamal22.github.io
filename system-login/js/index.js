@@ -15,3 +15,12 @@ function getUsers() {
 function setUsers(users) {
   localStorage.setItem("users", JSON.stringify(users));
 }
+
+// Get app base url path
+function basePath(url) {
+  var baseUrl = window.location.host.includes("127.0.0.1")
+    ? "" // No base path in local development
+    : "/system-login";
+
+  return `${baseUrl}${url}`;
+}

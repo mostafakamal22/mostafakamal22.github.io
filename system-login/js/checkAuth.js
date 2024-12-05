@@ -8,15 +8,15 @@ function checkAuth() {
 
   if (!authedUser) {
     // Prevent Non authed users from going homepage
-    if (location === "/home/") {
+    if (location === basePath("/home/")) {
       console.log("prevent not authed");
-      window.location.assign("/");
+      window.location.assign(basePath("/"));
     }
   } else {
     // Prevent authed user from going to login/register pages
-    if (location !== "/home/" && location !== "/home") {
+    if (location !== basePath("/home/") && location !== basePath("/home")) {
       console.log("prevent authed");
-      window.location.assign("/home");
+      window.location.assign(basePath("/home"));
     }
   }
 }
