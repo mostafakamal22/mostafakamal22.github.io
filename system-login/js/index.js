@@ -1,5 +1,3 @@
-// Global Variables
-
 // Get users from local storage
 function getUsers() {
   var users = localStorage.getItem("users");

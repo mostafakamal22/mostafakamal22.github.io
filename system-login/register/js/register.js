@@ -9,9 +9,15 @@ registerButton.addEventListener("click", handleRegister);
 
 // Register functionality
 function handleRegister() {
-  // Check users name, email and password values
-  if (!userName?.value || !userEmail?.value || !userPassword?.value) {
-    console.log("no user name , email or password");
+  // Inputs Validation
+  if (
+    !validateUsername(userName?.value) ||
+    !validateEmail(userEmail?.value) ||
+    isEmailAlreadyExists(userEmail?.value) ||
+    !validatePassword(userPassword?.value)
+  ) {
+    inputValidation();
+
     return;
   }
 
@@ -19,7 +25,7 @@ function handleRegister() {
   var users = getUsers();
 
   var newUser = {
-    name: userName?.value,
+    name: userName?.value?.trim(),
     email: userEmail?.value,
     password: userPassword?.value,
   };
