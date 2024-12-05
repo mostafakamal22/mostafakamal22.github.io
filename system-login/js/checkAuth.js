@@ -7,7 +7,7 @@ function checkAuth() {
   console.log({ location });
 
   if (!authedUser) {
-    // Prevent Not authed users from going homepage
+    // Prevent Non authed users from going homepage
     if (location === "/home/") {
       console.log("prevent not authed");
       window.location.assign("/");

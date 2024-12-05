@@ -1,20 +1,5 @@
 /* Root styles */
 :root {
-  /* Global variables */
-  /* --text-color-primary: #fff;
-  --bg-primary: #352e28;
-  
-  --gradient-start-color: #3ca55c;
-  --gradient-end-color: #b5ac49;
-  
-  --bg-selection: #fec260;
-  
-  --bg-highlight: #fffa85;
-  
-  --bg-btn-orange: #d1512d;
-  
-  --input-border-color: #d99c39;
-  --input-shadow-color: #fec26055; */
   --text-light-grey: #6c757d;
 }
 
@@ -32,27 +17,6 @@ h1 {
 .form-control::placeholder {
   color: var(--text-light-grey);
   opacity: 1;
-}
-
-.form-control:focus {
-  border-color: var(--input-border-color);
-  outline: 0;
-  box-shadow: 0 0 0 0.25rem var(--input-shadow-color);
-}
-
-.btn-orange {
-  background-color: var(--bg-btn-orange);
-  border: none;
-}
-
-.btn-orange:focus-visible,
-.btn-orange:focus,
-.btn-orange:hover,
-.btn-orange:active {
-  background-color: var(--bg-btn-orange) !important;
-  outline: 0;
-  box-shadow: none;
-  opacity: 0.9;
 }
 
 /* Background styles */
