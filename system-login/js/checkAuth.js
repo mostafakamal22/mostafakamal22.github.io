@@ -7,7 +7,10 @@ function checkAuth() {
 
   if (!authedUser) {
     // Prevent Non authed users from going homepage
-    if (location === basePath("/home/")) {
+    if (
+      location === basePath("/home/") ||
+      location === basePath("/home/index.html")
+    ) {
       window.location.assign(basePath("/"));
     }
   } else {
