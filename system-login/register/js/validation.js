@@ -168,7 +168,10 @@ function PasswordChecksValidator(password) {
   }
 
   // Check for special characters
-  if (/[@$!%*?&]/.test(password)) {
+  var specialCharRegex = /^[A-Za-z\d@$!%*?&]*$/;
+  var containsSpecialChar = /[@$!%*?&]/;
+
+  if (specialCharRegex.test(password) && containsSpecialChar.test(password)) {
     passwordChecksContainer[4].classList.add("valid", "text-success");
     passwordChecksContainer[4].classList.remove("text-danger");
   } else {
