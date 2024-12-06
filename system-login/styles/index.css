@@ -10,7 +10,8 @@ body {
 }
 
 h1,
-.main-title {
+.main-title,
+.navbar-brand {
   font-family: "Pacifico", cursive;
 }
 
