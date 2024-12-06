@@ -14,15 +14,22 @@ var passwordChecksContainer = document.querySelectorAll(
 );
 
 // Validation Events
-userName.addEventListener("input", function () {
-  inputValidation(this);
-});
-userEmail.addEventListener("input", function () {
-  inputValidation(this);
-});
-userPassword.addEventListener("input", function () {
-  inputValidation(this);
-});
+// Only at register page
+if (
+  location.pathname === basePath("/register") ||
+  location.pathname === basePath("/register/") ||
+  location.pathname === basePath("/register/index.html")
+) {
+  userName?.addEventListener("input", function () {
+    inputValidation(this);
+  });
+  userEmail?.addEventListener("input", function () {
+    inputValidation(this);
+  });
+  userPassword?.addEventListener("input", function () {
+    inputValidation(this);
+  });
+}
 
 // 1. Validate username
 function validateUsername(username) {

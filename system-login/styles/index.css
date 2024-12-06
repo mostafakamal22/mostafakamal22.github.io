@@ -15,6 +15,29 @@ h1,
   font-family: "Pacifico", cursive;
 }
 
+.main-title {
+  font-size: 2.5rem;
+  position: relative;
+  width: fit-content;
+  margin-inline: auto;
+}
+
+.main-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 20%;
+  z-index: -1;
+  background-color: #a2c1f0;
+  transition: all 300ms;
+}
+
+.main-title:hover::after {
+  height: 50%;
+}
+
 /* Shared styles */
 .form-control::placeholder {
   color: var(--text-light-grey);
