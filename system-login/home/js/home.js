@@ -9,7 +9,6 @@ function setUserName() {
   var username = localStorage.getItem("authedUser");
 
   if (!username) {
-    console.log("no authed user found");
     return;
   }
 

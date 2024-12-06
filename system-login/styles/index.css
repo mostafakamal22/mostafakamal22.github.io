@@ -10,7 +10,7 @@ body {
 }
 
 h1,
-.main-tilte {
+.main-title {
   font-family: "Pacifico", cursive;
 }
 
@@ -18,6 +18,20 @@ h1,
 .form-control::placeholder {
   color: var(--text-light-grey);
   opacity: 1;
+}
+
+.username-validation,
+.email-validation,
+.password-validation {
+  font-size: 12px;
+}
+
+.valid > .fa-circle-check {
+  display: block !important;
+}
+
+.valid > .fa-circle-xmark {
+  display: none !important;
 }
 
 /* Background styles */
