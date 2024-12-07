@@ -138,7 +138,7 @@ function isEmailAlreadyExists(email) {
 
 // Email Checks Validator
 function EmailChecksValidator(isError, message) {
-  if ((isError, message)) {
+  if (isError) {
     emailChecksContainer?.classList.remove("d-none");
     emailChecksContainer.innerHTML = `<i class="fa-solid fa-circle-xmark me-1"></i>${message}`;
   } else {

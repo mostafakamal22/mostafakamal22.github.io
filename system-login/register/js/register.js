@@ -9,6 +9,8 @@ registerButton.addEventListener("click", handleRegister);
 
 // Register functionality
 function handleRegister() {
+  // Reset Inputs validation checks
+  EmailChecksValidator(false);
   // Inputs Validation
   if (
     !validateUsername(userName?.value) ||
@@ -35,5 +37,5 @@ function handleRegister() {
   setUsers(updatedUsers);
 
   // Naviagate user to login page
-  location.assign(basePath("/"));
+  // location.assign(basePath("/"));
 }
