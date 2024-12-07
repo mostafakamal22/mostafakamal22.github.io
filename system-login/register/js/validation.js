@@ -82,9 +82,18 @@ function inputValidation(input) {
 
     isValidEmail ? validInput(userEmail) : invalidInput(userEmail);
 
-    if (!userEmail?.value || isEmailAlreadyExists(userEmail?.value)) {
+    if (
+      !userEmail?.value ||
+      !isValidEmail ||
+      isEmailAlreadyExists(userEmail?.value)
+    ) {
       invalidInput(userEmail);
-      isEmailAlreadyExists(userEmail?.value) && EmailChecksValidator(true);
+      !isValidEmail && EmailChecksValidator(true, "Invalid email.");
+      isEmailAlreadyExists(userEmail?.value) &&
+        EmailChecksValidator(
+          true,
+          "This email is already registered. Please use a different email."
+        );
     } else {
       validInput(userEmail);
       EmailChecksValidator(false);
@@ -128,9 +137,10 @@ function isEmailAlreadyExists(email) {
 }
 
 // Email Checks Validator
-function EmailChecksValidator(isAlreadyExists) {
-  if (isAlreadyExists) {
+function EmailChecksValidator(isError, message) {
+  if ((isError, message)) {
     emailChecksContainer?.classList.remove("d-none");
+    emailChecksContainer.innerHTML = `<i class="fa-solid fa-circle-xmark me-1"></i>${message}`;
   } else {
     emailChecksContainer?.classList.add("d-none");
   }
