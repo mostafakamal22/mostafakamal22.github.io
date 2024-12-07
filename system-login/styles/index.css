@@ -20,6 +20,7 @@ h1,
   position: relative;
   width: fit-content;
   margin-inline: auto;
+  user-select: none;
 }
 
 .main-title::after {
