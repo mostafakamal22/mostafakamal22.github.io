@@ -37,5 +37,5 @@ function handleRegister() {
   setUsers(updatedUsers);
 
   // Naviagate user to login page
-  // location.assign(basePath("/"));
+  location.assign(basePath("/"));
 }
