@@ -1,0 +1,67 @@
+/* Root styles */
+:root {
+  /* Primary Colors */
+  --sky-blue: #87ceeb;
+  --cyan: #00bcd4;
+
+  /* Secondary Colors */
+  --white: #ffffff;
+  --soft-gray: #f5f5f5;
+
+  /* Accent Colors */
+  --sun-yellow: #ffd700;
+  --cool-blue: #4682b4;
+
+  /* Error/Warning Colors */
+  --storm-gray: #708090;
+  --rain-blue: #1e90ff;
+
+  --primary-font: "Righteous", serif;
+  --secondary-font: "Poppins", sans-serif;
+}
+
+/* Re-setting Styles */
+body {
+  font-family: var(--secondary-font);
+  background-color: var(--cool-blue);
+  color: var(--soft-gray);
+  overflow-x: hidden;
+}
+
+.sunny-icon {
+  color: var(--sun-yellow);
+}
+
+.stormy-card {
+  background-color: var(--storm-gray);
+  color: var(--white);
+}
+
+h1 {
+  font-family: var(--primary-font);
+  font-size: 3rem;
+}
+
+/* Shared styles */
+.desc {
+  font-size: 1.2rem;
+}
+
+.form-control::placeholder {
+  color: var(--sky-blue);
+  opacity: 1;
+}
+
+.username-validation,
+.email-validation,
+.password-validation {
+  font-size: 12px;
+}
+
+.valid > .fa-circle-check {
+  display: block !important;
+}
+
+.valid > .fa-circle-xmark {
+  display: none !important;
+}
