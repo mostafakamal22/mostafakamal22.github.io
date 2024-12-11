@@ -36,18 +36,27 @@
         </header>
 
         <form class="my-5 d-flex gap-2">
-          <div class="flex-grow-1">
+          <div class="w-100 position-relative">
             <input
               type="text"
               id="location"
               name="location"
               aria-label="location"
               class="form-control"
-              placeholder="Enter location..."
+              placeholder="Enter a Location..."
             />
 
-            <div class="mt-2 p-2 location-validation">
-              <div class="text-danger d-flex align-items-center d-none"></div>
+            <!-- Locations List -->
+            <ul
+              id="locations-list"
+              class="position-relative bottom-0 w-100 list-group mt-1 fw-light"
+            ></ul>
+
+            <!-- Location Validation -->
+            <div class="mt-1 location-validation">
+              <div
+                class="text-bg-danger p-2 rounded d-flex align-items-center d-none"
+              ></div>
             </div>
           </div>
         </form>

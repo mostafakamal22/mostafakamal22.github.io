@@ -48,20 +48,26 @@ h1 {
 }
 
 .form-control::placeholder {
-  color: var(--sky-blue);
+  color: var(--storm-gray);
   opacity: 1;
 }
 
-.username-validation,
-.email-validation,
-.password-validation {
-  font-size: 12px;
+.location-validation {
+  font-size: 14px;
 }
 
 .valid > .fa-circle-check {
   display: block !important;
 }
 
-.valid > .fa-circle-xmark {
-  display: none !important;
+.list-group-item {
+  cursor: pointer;
+  transition: all 250ms ease-in-out;
+}
+
+.list-group-item:hover,
+.list-group-item:focus,
+.list-group-item:focus-visible {
+  background-color: var(--sky-blue);
+  border-color: var(--sky-blue);
 }
