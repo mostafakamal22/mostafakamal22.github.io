@@ -4,6 +4,7 @@ const API_BASE_URL = "https://api.weatherapi.com/v1/";
 
 const locationInput = document.getElementById("location");
 const locationsListGroup = document.getElementById("locations-list");
+const locationListItem = document.querySelectorAll(".list-group-item");
 
 const locationValidationContainer = document.querySelector(
   ".location-validation div"
@@ -44,14 +45,22 @@ function isValidLocation(location) {
 async function searchLocation(query) {
   if (!query) return null;
 
-  // Fetch locations Data
-  const res = await fetch(
-    `${API_BASE_URL}search.json?key=${API_KEY}&q=${query}`
-  );
+  try {
+    // Fetch locations Data
+    const res = await fetch(
+      `${API_BASE_URL}search.json?key=${API_KEY}&q=${query}`
+    );
 
-  const locationsList = await res.json();
+    const locationsList = await res.json();
 
-  return locationsList;
+    return locationsList;
+  } catch (error) {
+    // Show error message
+    locationValidationErrorMessage(error?.message);
+
+    // Show validation checks
+    toggleLocationValidation(true);
+  }
 }
 
 // Show search locations results on UI
@@ -75,13 +84,41 @@ function showLocationsList(locationsList) {
   const fragment = document.createDocumentFragment();
   for (let i = 0; i < locationsList.length; i++) {
     const locationItem = document.createElement("li");
+
     locationItem.innerHTML = `<span class="fw-semibold">${locationsList[i]?.name}</span> - ${locationsList[i]?.country}`;
+
     locationItem.classList.add("list-group-item");
+
+    locationItem.addEventListener("click", function () {
+      fetchLocationForecast(locationsList[i]?.id);
+    });
 
     fragment.appendChild(locationItem);
   }
 
   locationsListGroup.replaceChildren(fragment);
+}
+
+// Fetch location forecast
+async function fetchLocationForecast(locationID) {
+  if (!locationID) return null;
+
+  try {
+    const res = await fetch(
+      `${API_BASE_URL}forecast.json?key=${API_KEY}&q=id:${locationID}&days=3&aqi=no&alerts=no`
+    );
+
+    const locationWeatherData = await res.json();
+
+    console.log(locationWeatherData);
+    return locationWeatherData;
+  } catch (error) {
+    // Show error message
+    locationValidationErrorMessage(error?.message);
+
+    // Show validation checks
+    toggleLocationValidation(true);
+  }
 }
 
 // Remove locations list results
