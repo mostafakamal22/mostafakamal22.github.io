@@ -23,7 +23,16 @@
 /* Re-setting Styles */
 body {
   font-family: var(--secondary-font);
-  background-color: var(--cool-blue);
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.5),
+      var(--cool-blue)
+    ),
+    url("../images/bg-cover.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
   color: var(--soft-gray);
   overflow-x: hidden;
 }
