@@ -66,38 +66,13 @@
       <!-- Location Forecast -->
       <section id="location-forecast" class="py-2 py-md-4">
         <h2 class="text-uppercase fs-4 main-title mb-4"></h2>
-        <div class="row g-3">
-          <!-- <div class="col-md-4">
-            <div
-              style="
-                --icon-src: url('https://cdn.weatherapi.com/weather/64x64/day/122.png');
-              "
-              class="card bg-glass rounded-4 text-white"
-            >
-              <div class="card-body">
-                <div class="d-flex gap-2 justify-content-between">
-                  <div class="w-50">
-                    <h2
-                      class="card-title fw-semibold d-flex align-items-center"
-                    >
-                      7.2°<span class="fs-6">C</span>
-                    </h2>
-                    <p class="card-text">Thursday</p>
-                  </div>
+        <div class="row g-3"></div>
+      </section>
 
-                  <h3 class="fw-bold fs-5">Overcast</h3>
-                </div>
-
-                <div
-                  class="w-50 d-flex gap-3 fs-6 fw-semibold mt-4 pt-4 border-top"
-                >
-                  <div><i class="fa-solid fa-droplet"></i> 75%</div>
-                  <div><i class="fa-solid fa-wind"></i> 75Km/h</div>
-                </div>
-              </div>
-            </div>
-          </div> -->
-        </div>
+      <!-- Popular Cities -->
+      <section id="popular-cities" class="py-2 py-md-4">
+        <h2 class="text-uppercase fs-4 main-title mb-4"></h2>
+        <div class="row flex-nowrap g-3 overflow-x-scroll pb-4"></div>
       </section>
     </main>
 
@@ -111,6 +86,33 @@
         >
       </div>
     </footer>
+
+    <!-- Loading Spinner Modal -->
+    <div
+      class="modal fade"
+      id="loadingSpinnerModal"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="loadingSpinnerModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-transparent border-0">
+          <div class="modal-body">
+            <div class="d-flex justify-content-center">
+              <div
+                style="width: 3rem; height: 3rem"
+                class="spinner-border text-info"
+                role="status"
+              >
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Bootstrap Scripts -->
     <script src="./js/lib/bootstrap.bundle.min.js"></script>

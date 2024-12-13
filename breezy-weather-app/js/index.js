@@ -13,6 +13,58 @@ const locationValidationContainer = document.querySelector(
 const locationForecastTitle = document.querySelector("#location-forecast h2");
 const locationForecastRow = document.querySelector("#location-forecast .row");
 
+const popularCitiesTitle = document.querySelector("#popular-cities h2");
+const popularCitiesRow = document.querySelector("#popular-cities .row");
+const POPULAR_CITIES = [
+  {
+    id: 683802,
+    name: "Cairo",
+    country: "Egypt",
+  },
+  {
+    id: 681570,
+    name: "Alexandria",
+    country: "Egypt",
+  },
+  {
+    id: 2801268,
+    name: "London",
+    country: "United Kingdom",
+  },
+  {
+    id: 2618724,
+    name: "New York",
+    country: "United States of America",
+  },
+  {
+    id: 803267,
+    name: "Paris",
+    country: "France",
+  },
+  {
+    id: 568120,
+    name: "Berlin",
+    country: "Germany",
+  },
+  {
+    id: 2555576,
+    name: "Washington",
+    country: "United States of America",
+  },
+  {
+    id: 2145091,
+    name: "Moscow",
+    country: "Russia",
+  },
+];
+
+const loadingSpinnerModal = new bootstrap.Modal("#loadingSpinnerModal");
+const spinnerModal = document.getElementById("loadingSpinnerModal");
+
+spinnerModal.addEventListener("hide.bs.modal", function () {
+  console.log("hide");
+});
+
 // Events handlers
 locationInput.addEventListener("input", async function (e) {
   // check location validation
@@ -23,9 +75,17 @@ locationInput.addEventListener("input", async function (e) {
     // Show Loading state
     loadingLocationsResults();
 
-    // Show Locations results
-    const locationsList = await searchLocation(e.target?.value);
-    showLocationsList(locationsList);
+    try {
+      // Show Locations results
+      const locationsList = await searchLocation(e.target?.value);
+      showLocationsList(locationsList);
+    } catch (error) {
+      // Show error message
+      locationValidationErrorMessage(error?.message);
+
+      // Show validation checks
+      toggleLocationValidation(true);
+    }
   } else {
     // Make sure location list is empty
     removeLocationsResults();
@@ -40,6 +100,33 @@ locationInput.addEventListener("input", async function (e) {
   }
 });
 
+document.addEventListener("DOMContentLoaded", async function () {
+  // Load popular cities data at first
+  let popularCitiesWeatherList = [];
+  try {
+    // Show Loading Spinner
+    await toggleLoadingSpinnerModal(true);
+
+    for (let i = 0; i < POPULAR_CITIES.length; i++) {
+      const cityID = POPULAR_CITIES[i].id;
+
+      const cityWeatherData = await fetchLocationForecast(cityID, true);
+
+      popularCitiesWeatherList.push(cityWeatherData);
+    }
+
+    showPopularCitiesCurrentWeather(popularCitiesWeatherList);
+
+    // Hide Loading Spinner
+    await toggleLoadingSpinnerModal(false);
+  } catch (error) {
+    // Hide Loading Spinner
+    await toggleLoadingSpinnerModal(false);
+
+    console.log(error?.message);
+  }
+});
+
 // validation location input
 function isValidLocation(location) {
   if (!location || location.length < 3) return false;
@@ -51,22 +138,14 @@ function isValidLocation(location) {
 async function searchLocation(query) {
   if (!query) return null;
 
-  try {
-    // Fetch locations Data
-    const res = await fetch(
-      `${API_BASE_URL}search.json?key=${API_KEY}&q=${query}`
-    );
+  // Fetch locations Data
+  const res = await fetch(
+    `${API_BASE_URL}search.json?key=${API_KEY}&q=${query}`
+  );
 
-    const locationsList = await res.json();
+  const locationsList = await res.json();
 
-    return locationsList;
-  } catch (error) {
-    // Show error message
-    locationValidationErrorMessage(error?.message);
-
-    // Show validation checks
-    toggleLocationValidation(true);
-  }
+  return locationsList;
 }
 
 // Show search locations results on UI
@@ -99,17 +178,30 @@ function showLocationsList(locationsList) {
       // Hide location list results
       removeLocationsResults();
 
-      // Fetch location forecast data
-      const locationForecastData = await fetchLocationForecast(
-        locationsList[i]?.id
-      );
+      try {
+        // Show Loading Spinner
+        await toggleLoadingSpinnerModal(true);
 
-      // Show forecast data result on UI
-      showLocationForecast(
-        locationForecastData,
-        locationForecastTitle,
-        locationForecastRow
-      );
+        // Fetch location forecast data
+        const locationForecastData = await fetchLocationForecast(
+          locationsList[i]?.id
+        );
+
+        // Show forecast data result on UI
+        showLocationForecast(locationForecastData);
+      } catch (error) {
+        // Hide Loading Spinner
+        await toggleLoadingSpinnerModal(false);
+
+        // Show error message
+        locationValidationErrorMessage(error?.message);
+
+        // Show validation checks
+        toggleLocationValidation(true);
+      } finally {
+        // Hide Loading Spinner
+        await toggleLoadingSpinnerModal(false);
+      }
     });
 
     fragment.appendChild(locationItem);
@@ -136,25 +228,18 @@ function loadingLocationsResults() {
 }
 
 // Fetch location forecast
-async function fetchLocationForecast(locationID) {
+async function fetchLocationForecast(locationID, isCurrentWeatherOnly) {
   if (!locationID) return null;
 
-  try {
-    const res = await fetch(
-      `${API_BASE_URL}forecast.json?key=${API_KEY}&q=id:${locationID}&days=3&aqi=no&alerts=no`
-    );
+  const URL = isCurrentWeatherOnly
+    ? `${API_BASE_URL}current.json?key=${API_KEY}&q=id:${locationID}&aqi=no`
+    : `${API_BASE_URL}forecast.json?key=${API_KEY}&q=id:${locationID}&days=3&aqi=no&alerts=no`;
 
-    const locationWeatherData = await res.json();
+  const res = await fetch(URL);
 
-    console.log(locationWeatherData);
-    return locationWeatherData;
-  } catch (error) {
-    // Show error message
-    locationValidationErrorMessage(error?.message);
+  const locationWeatherData = await res.json();
 
-    // Show validation checks
-    toggleLocationValidation(true);
-  }
+  return locationWeatherData;
 }
 
 // Show location forecast
@@ -181,7 +266,7 @@ function showLocationForecast(locationForecastData) {
   const currentWeatherCol = document.createElement("div");
   currentWeatherCol.classList.add("col-md-4");
   currentWeatherCol.innerHTML = ` 
-          <div style='--icon-src: url("https:${condition_icon}")' class="card bg-glass rounded-4 text-white">
+          <div style='--icon-src: url("https:${condition_icon}")' class="card bg-glass rounded-4 text-white user-select-none">
             <div class="card-body">
             <div class="d-flex gap-2 justify-content-between">
                 <div class="w-50">
@@ -233,7 +318,7 @@ function showLocationForecast(locationForecastData) {
     const forecastCol = document.createElement("div");
     forecastCol.classList.add("col-md-4");
     forecastCol.innerHTML = ` 
-            <div style='--icon-src: url("https:${condition_icon}")' class="card bg-glass rounded-4 text-white">
+            <div style='--icon-src: url("https:${condition_icon}")' class="card bg-glass rounded-4 text-white user-select-none">
               <div class="card-body">
               <div class="d-flex gap-2 justify-content-between">
                   <div class="w-50">
@@ -266,6 +351,62 @@ function showLocationForecast(locationForecastData) {
   locationForecastRow.replaceChildren(fragment);
 }
 
+// Show popular cities current weather
+function showPopularCitiesCurrentWeather(popularCitiesWeather) {
+  if (!popularCitiesWeather) return;
+
+  // Show popular cities current weather data on UI
+  const fragment = document.createDocumentFragment();
+
+  for (let i = 0; i < popularCitiesWeather.length; i++) {
+    const {
+      current,
+      location: { name },
+    } = popularCitiesWeather[i];
+
+    const humidity = current?.humidity;
+    const temp_c = current?.temp_c;
+    const wind_kph = current?.wind_kph;
+    const cloud = current?.cloud;
+    const condition_text = current?.condition?.text;
+    const condition_icon = current?.condition?.icon;
+
+    const currentWeatherCol = document.createElement("div");
+    currentWeatherCol.classList.add("col-md-4");
+    currentWeatherCol.innerHTML = ` 
+           <div style='--icon-src: url("https:${condition_icon}")' class="card bg-glass rounded-4 text-white user-select-none">
+             <div class="card-body">
+             <div class="d-flex gap-2 justify-content-between">
+                 <div class="w-50">
+                   <h2
+                     class="card-title fw-semibold d-flex align-items-center"
+                   >
+                     ${temp_c}&deg;<span class="fs-6 text-primary-emphasis">C</span>
+                   </h2>
+                   <p class="card-text">${name}</p>
+                 </div>
+ 
+                 <h3 class="fw-bold fs-5 text-capitalize text-primary-emphasis main-title">${condition_text}</h3>
+               </div>
+ 
+               <div
+                 class="w-75 d-flex gap-3 fs-6 fw-semibold mt-4 pt-4 border-top border-primary-subtle"
+               >
+               <div><i class="fa-solid fa-cloud text-primary-emphasis me-1"></i>${cloud}%</div>
+                 <div><i class="fa-solid fa-droplet text-primary-emphasis"></i> ${humidity}%</div>
+                 <div><i class="fa-solid fa-wind text-primary-emphasis"></i> ${wind_kph}<span class="fs-6">Km&sol;h</span></div>
+               </div>
+             </div>
+           </div>
+          `;
+
+    fragment.appendChild(currentWeatherCol);
+  }
+
+  popularCitiesTitle.innerHTML = `Popular Cities Now`;
+  popularCitiesRow.replaceChildren(fragment);
+}
+
 // Remove locations list results
 function removeLocationsResults() {
   locationsListGroup.replaceChildren();
@@ -284,4 +425,17 @@ function toggleLocationValidation(showValidation) {
 // Control location validation check message
 function locationValidationErrorMessage(message) {
   locationValidationContainer.innerHTML = `<i class="fa-solid fa-circle-xmark me-2"></i><span>${message}</span>`;
+}
+
+// Hide/Show loading spinner modal
+async function toggleLoadingSpinnerModal(showLoadingSpinnerModal) {
+  console.log(showLoadingSpinnerModal);
+  if (showLoadingSpinnerModal) {
+    await loadingSpinnerModal.show();
+    return;
+  }
+
+  await loadingSpinnerModal.hide();
+
+  console.log("last");
 }

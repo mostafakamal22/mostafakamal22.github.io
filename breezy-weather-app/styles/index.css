@@ -98,3 +98,12 @@ h1 {
   background-color: var(--sky-blue);
   border-color: var(--sky-blue);
 }
+
+#popular-cities .row {
+  --scrollbar-thumb: rgb(5, 44, 101) !important;
+  --scrollbar-track: transparent !important;
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb, initial)
+    var(--scrollbar-track, initial);
+}
