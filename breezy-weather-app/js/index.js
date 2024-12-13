@@ -161,6 +161,7 @@ function showLocationForecast(locationForecastData) {
     const avghumidity = forecastday[i]?.day?.avghumidity;
     const avgtemp_c = forecastday[i]?.day?.avgtemp_c;
     const avgvis_km = forecastday[i]?.day?.avgvis_km;
+    const daily_chance_of_rain = forecastday[i]?.day?.daily_chance_of_rain;
     const condition_text = forecastday[i]?.day?.condition?.text;
     const condition_icon = forecastday[i]?.day?.condition?.icon;
 
@@ -183,10 +184,11 @@ function showLocationForecast(locationForecastData) {
                 </div>
 
                 <div
-                  class="w-50 d-flex gap-3 fs-6 fw-semibold mt-4 pt-4 border-top border-primary-subtle"
+                  class="w-75 d-flex gap-3 fs-6 fw-semibold mt-4 pt-4 border-top border-primary-subtle"
                 >
+                <div><i class="fa-solid fa-cloud-rain text-primary-emphasis me-1"></i>${daily_chance_of_rain}%</div>
                   <div><i class="fa-solid fa-droplet text-primary-emphasis"></i> ${avghumidity}%</div>
-                  <div><i class="fa-solid fa-wind text-primary-emphasis"></i> ${avgvis_km}Km/h</div>
+                  <div><i class="fa-solid fa-wind text-primary-emphasis"></i> ${avgvis_km}<span class="fs-6">Km&sol;h</span></div>
                 </div>
               </div>
             </div>
