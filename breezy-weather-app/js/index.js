@@ -105,7 +105,11 @@ function showLocationsList(locationsList) {
       );
 
       // Show forecast data result on UI
-      showLocationForecast(locationForecastData);
+      showLocationForecast(
+        locationForecastData,
+        locationForecastTitle,
+        locationForecastRow
+      );
     });
 
     fragment.appendChild(locationItem);
@@ -156,15 +160,55 @@ async function fetchLocationForecast(locationID) {
 // Show location forecast
 function showLocationForecast(locationForecastData) {
   //Get needed data from the location forecast object
-  const { forecast, location } = locationForecastData;
+  const { current, forecast, location } = locationForecastData;
 
-  if (!forecast || !location) return;
+  if (!forecast || !location || !current) return;
 
   // Show forecast data on UI
   const { forecastday } = forecast;
   const { name, country } = location;
 
   const fragment = document.createDocumentFragment();
+  // Current weather
+  const day = "Now";
+  const humidity = current?.humidity;
+  const temp_c = current?.temp_c;
+  const wind_kph = current?.wind_kph;
+  const cloud = current?.cloud;
+  const condition_text = current?.condition?.text;
+  const condition_icon = current?.condition?.icon;
+
+  const currentWeatherCol = document.createElement("div");
+  currentWeatherCol.classList.add("col-md-4");
+  currentWeatherCol.innerHTML = ` 
+          <div style='--icon-src: url("https:${condition_icon}")' class="card bg-glass rounded-4 text-white">
+            <div class="card-body">
+            <div class="d-flex gap-2 justify-content-between">
+                <div class="w-50">
+                  <h2
+                    class="card-title fw-semibold d-flex align-items-center"
+                  >
+                    ${temp_c}&deg;<span class="fs-6 text-primary-emphasis">C</span>
+                  </h2>
+                  <p class="card-text">${day}</p>
+                </div>
+
+                <h3 class="fw-bold fs-5 text-capitalize text-primary-emphasis main-title">${condition_text}</h3>
+              </div>
+
+              <div
+                class="w-75 d-flex gap-3 fs-6 fw-semibold mt-4 pt-4 border-top border-primary-subtle"
+              >
+              <div><i class="fa-solid fa-cloud text-primary-emphasis me-1"></i>${cloud}%</div>
+                <div><i class="fa-solid fa-droplet text-primary-emphasis"></i> ${humidity}%</div>
+                <div><i class="fa-solid fa-wind text-primary-emphasis"></i> ${wind_kph}<span class="fs-6">Km&sol;h</span></div>
+              </div>
+            </div>
+          </div>
+         `;
+
+  fragment.appendChild(currentWeatherCol);
+
   const weekday = [
     "Sunday",
     "Monday",
@@ -175,12 +219,13 @@ function showLocationForecast(locationForecastData) {
     "Saturday",
   ];
 
+  // Forecast weather
   for (let i = 0; i < forecastday.length; i++) {
     const d = new Date(forecastday[i]?.date);
     const day = weekday[d.getUTCDay()];
     const avghumidity = forecastday[i]?.day?.avghumidity;
     const avgtemp_c = forecastday[i]?.day?.avgtemp_c;
-    const avgvis_km = forecastday[i]?.day?.avgvis_km;
+    const maxwind_kph = forecastday[i]?.day?.maxwind_kph;
     const daily_chance_of_rain = forecastday[i]?.day?.daily_chance_of_rain;
     const condition_text = forecastday[i]?.day?.condition?.text;
     const condition_icon = forecastday[i]?.day?.condition?.icon;
@@ -208,7 +253,7 @@ function showLocationForecast(locationForecastData) {
                 >
                 <div><i class="fa-solid fa-cloud-rain text-primary-emphasis me-1"></i>${daily_chance_of_rain}%</div>
                   <div><i class="fa-solid fa-droplet text-primary-emphasis"></i> ${avghumidity}%</div>
-                  <div><i class="fa-solid fa-wind text-primary-emphasis"></i> ${avgvis_km}<span class="fs-6">Km&sol;h</span></div>
+                  <div><i class="fa-solid fa-wind text-primary-emphasis"></i> ${maxwind_kph}<span class="fs-6">Km&sol;h</span></div>
                 </div>
               </div>
             </div>
