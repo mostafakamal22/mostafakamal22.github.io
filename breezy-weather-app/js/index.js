@@ -20,6 +20,9 @@ locationInput.addEventListener("input", async function (e) {
     // Hide validation check
     toggleLocationValidation(false);
 
+    // Show Loading state
+    loadingLocationsResults();
+
     // Show Locations results
     const locationsList = await searchLocation(e.target?.value);
     showLocationsList(locationsList);
@@ -107,6 +110,23 @@ function showLocationsList(locationsList) {
 
     fragment.appendChild(locationItem);
   }
+
+  locationsListGroup.replaceChildren(fragment);
+}
+
+// Show location results loading state
+function loadingLocationsResults() {
+  const fragment = document.createDocumentFragment();
+
+  const locationItem = document.createElement("li");
+
+  locationItem.innerHTML = `<span class="spinner-border spinner-border-sm text-primary-emphasis" aria-hidden="true"></span>
+  <span role="status">Loading...</span>
+`;
+
+  locationItem.classList.add("list-group-item");
+
+  fragment.appendChild(locationItem);
 
   locationsListGroup.replaceChildren(fragment);
 }
