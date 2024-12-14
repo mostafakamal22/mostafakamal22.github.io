@@ -397,7 +397,7 @@ function showPopularCitiesCurrentWeather(popularCitiesWeather) {
     const condition_icon = current?.condition?.icon;
 
     const currentWeatherCol = document.createElement("div");
-    currentWeatherCol.classList.add("col-md-4");
+    currentWeatherCol.classList.add("col-7", "col-md-4");
     currentWeatherCol.innerHTML = ` 
            <div
       style="--icon-src: url('https:${condition_icon}')"
@@ -406,7 +406,7 @@ function showPopularCitiesCurrentWeather(popularCitiesWeather) {
     >
       <div class="card-body">
         <div class="d-flex gap-2 justify-content-between">
-          <div class="w-50">
+          <div class="w-75">
             <h2
               class="card-title fw-semibold d-flex align-items-center"
               aria-label="Temperature: ${temp_c} degrees Celsius"
@@ -421,7 +421,7 @@ function showPopularCitiesCurrentWeather(popularCitiesWeather) {
           </div>
 
           <h3
-            class="fw-bold fs-5 text-capitalize text-primary-emphasis main-title"
+            class="fw-bold fs-6 text-capitalize text-primary-emphasis main-title"
             aria-label="Condition: ${condition_text}"
           >
             ${condition_text}
@@ -429,7 +429,7 @@ function showPopularCitiesCurrentWeather(popularCitiesWeather) {
         </div>
 
         <div
-          class="w-75 d-flex gap-3 fs-6 fw-semibold mt-4 pt-4 border-top border-primary-subtle"
+          class="w-75 d-flex gap-2 gap-md-3 flex-wrap fs-6 fw-semibold mt-4 pt-4 border-top border-primary-subtle"
           aria-label="Additional weather details"
         >
           <div aria-label="Cloud coverage: ${cloud}%">
