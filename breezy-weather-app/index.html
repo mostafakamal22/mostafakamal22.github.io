@@ -29,14 +29,29 @@
   <body class="min-vh-100 d-flex flex-column justify-content-between">
     <!-- Main content -->
     <main class="container py-5">
-      <!-- Search location -->
-      <section>
+      <!-- Hero -->
+      <section class="pb-4 mt-4 border-bottom border-primary-subtle">
         <header class="text-center">
           <h1 class="text-center text-uppercase fw-bold">Breezy</h1>
           <p class="desc">Simple and smooth weather insights.</p>
         </header>
+      </section>
 
-        <form class="my-5 d-flex gap-2">
+      <!-- Popular Cities -->
+      <section id="popular-cities" class="py-2 py-md-4 mt-4">
+        <h2 class="text-uppercase fs-4 main-title mb-4"></h2>
+        <div class="row flex-nowrap g-3 overflow-x-scroll pb-4"></div>
+      </section>
+
+      <!-- Search location -->
+      <section class="mt-4">
+        <header>
+          <h2 class="text-uppercase fs-4 main-title mb-4">
+            Your Weather, One Location Away
+          </h2>
+        </header>
+
+        <form class="d-flex gap-2">
           <div class="w-100 position-relative">
             <input
               type="text"
@@ -64,16 +79,37 @@
       </section>
 
       <!-- Location Forecast -->
-      <section id="location-forecast" class="py-2 py-md-4">
-        <h2 class="text-uppercase fs-4 main-title mb-4"></h2>
+      <section id="location-forecast" class="py-2 py-md-4 mt-2">
+        <h2 class="text-uppercase fs-5 main-title mb-4"></h2>
         <div class="row g-3"></div>
       </section>
 
-      <!-- Popular Cities -->
-      <section id="popular-cities" class="py-2 py-md-4 mt-4">
-        <h2 class="text-uppercase fs-4 main-title mb-4"></h2>
-        <div class="row flex-nowrap g-3 overflow-x-scroll pb-4"></div>
-      </section>
+      <!-- Loading Spinner Modal -->
+      <div
+        class="modal fade"
+        id="loadingSpinnerModal"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="loadingSpinnerModal"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content bg-transparent border-0">
+            <div class="modal-body">
+              <div class="d-flex justify-content-center">
+                <div
+                  style="width: 3rem; height: 3rem"
+                  class="spinner-border text-info"
+                  role="status"
+                >
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
 
     <footer class="text-center text-lg-start">
@@ -86,33 +122,6 @@
         >
       </div>
     </footer>
-
-    <!-- Loading Spinner Modal -->
-    <div
-      class="modal fade"
-      id="loadingSpinnerModal"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-      aria-labelledby="loadingSpinnerModal"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content bg-transparent border-0">
-          <div class="modal-body">
-            <div class="d-flex justify-content-center">
-              <div
-                style="width: 3rem; height: 3rem"
-                class="spinner-border text-info"
-                role="status"
-              >
-                <span class="visually-hidden">Loading...</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!-- Bootstrap Scripts -->
     <script src="./js/lib/bootstrap.bundle.min.js"></script>
