@@ -59,11 +59,6 @@ const POPULAR_CITIES = [
 ];
 
 const loadingSpinnerModal = new bootstrap.Modal("#loadingSpinnerModal");
-const spinnerModal = document.getElementById("loadingSpinnerModal");
-
-spinnerModal.addEventListener("hide.bs.modal", function () {
-  console.log("hide");
-});
 
 // Events handlers
 locationInput.addEventListener("input", async function (e) {
@@ -105,7 +100,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   let popularCitiesWeatherList = [];
   try {
     // Show Loading Spinner
-    await toggleLoadingSpinnerModal(true);
+    toggleLoadingSpinnerModal(true);
 
     for (let i = 0; i < POPULAR_CITIES.length; i++) {
       const cityID = POPULAR_CITIES[i].id;
@@ -118,12 +113,13 @@ document.addEventListener("DOMContentLoaded", async function () {
     showPopularCitiesCurrentWeather(popularCitiesWeatherList);
 
     // Hide Loading Spinner
-    await toggleLoadingSpinnerModal(false);
+    toggleLoadingSpinnerModal(false);
   } catch (error) {
-    // Hide Loading Spinner
-    await toggleLoadingSpinnerModal(false);
-
+    // if error happens does nothing
     console.log(error?.message);
+  } finally {
+    // Hide Loading Spinner
+    toggleLoadingSpinnerModal(false);
   }
 });
 
@@ -180,7 +176,7 @@ function showLocationsList(locationsList) {
 
       try {
         // Show Loading Spinner
-        await toggleLoadingSpinnerModal(true);
+        toggleLoadingSpinnerModal(true);
 
         // Fetch location forecast data
         const locationForecastData = await fetchLocationForecast(
@@ -190,9 +186,6 @@ function showLocationsList(locationsList) {
         // Show forecast data result on UI
         showLocationForecast(locationForecastData);
       } catch (error) {
-        // Hide Loading Spinner
-        await toggleLoadingSpinnerModal(false);
-
         // Show error message
         locationValidationErrorMessage(error?.message);
 
@@ -200,7 +193,7 @@ function showLocationsList(locationsList) {
         toggleLocationValidation(true);
       } finally {
         // Hide Loading Spinner
-        await toggleLoadingSpinnerModal(false);
+        toggleLoadingSpinnerModal(false);
       }
     });
 
@@ -428,14 +421,16 @@ function locationValidationErrorMessage(message) {
 }
 
 // Hide/Show loading spinner modal
-async function toggleLoadingSpinnerModal(showLoadingSpinnerModal) {
-  console.log(showLoadingSpinnerModal);
+function toggleLoadingSpinnerModal(showLoadingSpinnerModal) {
+  // Using settimeout because show/hide methods are async (CSS transition Takes Time)
   if (showLoadingSpinnerModal) {
-    await loadingSpinnerModal.show();
+    setTimeout(() => {
+      loadingSpinnerModal.show();
+    }, 0);
     return;
   }
 
-  await loadingSpinnerModal.hide();
-
-  console.log("last");
+  setTimeout(() => {
+    loadingSpinnerModal.hide();
+  }, 1000);
 }
