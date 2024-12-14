@@ -259,31 +259,47 @@ function showLocationForecast(locationForecastData) {
   const currentWeatherCol = document.createElement("div");
   currentWeatherCol.classList.add("col-md-4");
   currentWeatherCol.innerHTML = ` 
-          <div style='--icon-src: url("https:${condition_icon}")' class="card bg-glass rounded-4 text-white user-select-none">
-            <div class="card-body">
-            <div class="d-flex gap-2 justify-content-between">
-                <div class="w-50">
-                  <h2
-                    class="card-title fw-semibold d-flex align-items-center"
-                  >
-                    ${temp_c}&deg;<span class="fs-6 text-primary-emphasis">C</span>
-                  </h2>
-                  <p class="card-text">${day}</p>
-                </div>
-
-                <h3 class="fw-bold fs-5 text-capitalize text-primary-emphasis main-title">${condition_text}</h3>
-              </div>
-
-              <div
-                class="w-75 d-flex gap-3 fs-6 fw-semibold mt-4 pt-4 border-top border-primary-subtle"
+                <div 
+        style='--icon-src: url("https:${condition_icon}")' 
+        class="card bg-glass rounded-4 text-white user-select-none" 
+        aria-label="Weather card showing temperature, day, condition, cloud cover, humidity, and wind speed"
+      >
+        <div class="card-body">
+          <div class="d-flex gap-2 justify-content-between">
+            <div class="w-50">
+              <h2 
+                class="card-title fw-semibold d-flex align-items-center" 
+                aria-label="Current temperature: ${temp_c} degrees Celsius"
               >
-              <div><i class="fa-solid fa-cloud text-primary-emphasis me-1"></i>${cloud}%</div>
-                <div><i class="fa-solid fa-droplet text-primary-emphasis"></i> ${humidity}%</div>
-                <div><i class="fa-solid fa-wind text-primary-emphasis"></i> ${wind_kph}<span class="fs-6">Km&sol;h</span></div>
-              </div>
+                ${temp_c}&deg;<span class="fs-6 text-primary-emphasis" aria-hidden="true">C</span>
+              </h2>
+              <p class="card-text" aria-label="Day: ${day}">${day}</p>
+            </div>
+
+            <h3 
+              class="fw-bold fs-5 text-capitalize text-primary-emphasis main-title" 
+              aria-label="Weather condition: ${condition_text}"
+            >
+              ${condition_text}
+            </h3>
+          </div>
+
+          <div 
+            class="w-75 d-flex gap-3 fs-6 fw-semibold mt-4 pt-4 border-top border-primary-subtle" 
+            aria-label="Additional weather details"
+          >
+            <div aria-label="Cloud cover: ${cloud}%">
+              <i class="fa-solid fa-cloud text-primary-emphasis me-1" aria-hidden="true"></i>${cloud}%
+            </div>
+            <div aria-label="Humidity: ${humidity}%">
+              <i class="fa-solid fa-droplet text-primary-emphasis" aria-hidden="true"></i> ${humidity}%
+            </div>
+            <div aria-label="Wind speed: ${wind_kph} kilometers per hour">
+              <i class="fa-solid fa-wind text-primary-emphasis" aria-hidden="true"></i> ${wind_kph}<span class="fs-6" aria-hidden="true">Km&sol;h</span>
             </div>
           </div>
-         `;
+        </div>
+      </div>`;
 
   fragment.appendChild(currentWeatherCol);
 
@@ -311,31 +327,47 @@ function showLocationForecast(locationForecastData) {
     const forecastCol = document.createElement("div");
     forecastCol.classList.add("col-md-4");
     forecastCol.innerHTML = ` 
-            <div style='--icon-src: url("https:${condition_icon}")' class="card bg-glass rounded-4 text-white user-select-none">
-              <div class="card-body">
+                      <div 
+            style='--icon-src: url("https:${condition_icon}")' 
+            class="card bg-glass rounded-4 text-white user-select-none" 
+            aria-label="Weather card showing average temperature, daily chance of rain, humidity, and wind speed for ${day}"
+          >
+            <div class="card-body">
               <div class="d-flex gap-2 justify-content-between">
-                  <div class="w-50">
-                    <h2
-                      class="card-title fw-semibold d-flex align-items-center"
-                    >
-                      ${avgtemp_c}&deg;<span class="fs-6 text-primary-emphasis">C</span>
-                    </h2>
-                    <p class="card-text">${day}</p>
-                  </div>
-
-                  <h3 class="fw-bold fs-5 text-capitalize text-primary-emphasis main-title">${condition_text}</h3>
+                <div class="w-50">
+                  <h2 
+                    class="card-title fw-semibold d-flex align-items-center" 
+                    aria-label="Average temperature: ${avgtemp_c} degrees Celsius"
+                  >
+                    ${avgtemp_c}&deg;<span class="fs-6 text-primary-emphasis" aria-hidden="true">C</span>
+                  </h2>
+                  <p class="card-text" aria-label="Day: ${day}">${day}</p>
                 </div>
 
-                <div
-                  class="w-75 d-flex gap-3 fs-6 fw-semibold mt-4 pt-4 border-top border-primary-subtle"
+                <h3 
+                  class="fw-bold fs-5 text-capitalize text-primary-emphasis main-title" 
+                  aria-label="Condition: ${condition_text}"
                 >
-                <div><i class="fa-solid fa-cloud-rain text-primary-emphasis me-1"></i>${daily_chance_of_rain}%</div>
-                  <div><i class="fa-solid fa-droplet text-primary-emphasis"></i> ${avghumidity}%</div>
-                  <div><i class="fa-solid fa-wind text-primary-emphasis"></i> ${maxwind_kph}<span class="fs-6">Km&sol;h</span></div>
+                  ${condition_text}
+                </h3>
+              </div>
+
+              <div 
+                class="w-75 d-flex gap-3 fs-6 fw-semibold mt-4 pt-4 border-top border-primary-subtle" 
+                aria-label="Additional weather details"
+              >
+                <div aria-label="Daily chance of rain: ${daily_chance_of_rain}%">
+                  <i class="fa-solid fa-cloud-rain text-primary-emphasis me-1" aria-hidden="true"></i>${daily_chance_of_rain}%
+                </div>
+                <div aria-label="Average humidity: ${avghumidity}%">
+                  <i class="fa-solid fa-droplet text-primary-emphasis" aria-hidden="true"></i> ${avghumidity}%
+                </div>
+                <div aria-label="Maximum wind speed: ${maxwind_kph} kilometers per hour">
+                  <i class="fa-solid fa-wind text-primary-emphasis" aria-hidden="true"></i> ${maxwind_kph}<span class="fs-6" aria-hidden="true">Km&sol;h</span>
                 </div>
               </div>
             </div>
-           `;
+          </div>`;
 
     fragment.appendChild(forecastCol);
   }
@@ -367,31 +399,63 @@ function showPopularCitiesCurrentWeather(popularCitiesWeather) {
     const currentWeatherCol = document.createElement("div");
     currentWeatherCol.classList.add("col-md-4");
     currentWeatherCol.innerHTML = ` 
-           <div style='--icon-src: url("https:${condition_icon}")' class="card bg-glass rounded-4 text-white user-select-none">
-             <div class="card-body">
-             <div class="d-flex gap-2 justify-content-between">
-                 <div class="w-50">
-                   <h2
-                     class="card-title fw-semibold d-flex align-items-center"
-                   >
-                     ${temp_c}&deg;<span class="fs-6 text-primary-emphasis">C</span>
-                   </h2>
-                   <p class="card-text">${name}</p>
-                 </div>
- 
-                 <h3 class="fw-bold fs-5 text-capitalize text-primary-emphasis main-title">${condition_text}</h3>
-               </div>
- 
-               <div
-                 class="w-75 d-flex gap-3 fs-6 fw-semibold mt-4 pt-4 border-top border-primary-subtle"
-               >
-               <div><i class="fa-solid fa-cloud text-primary-emphasis me-1"></i>${cloud}%</div>
-                 <div><i class="fa-solid fa-droplet text-primary-emphasis"></i> ${humidity}%</div>
-                 <div><i class="fa-solid fa-wind text-primary-emphasis"></i> ${wind_kph}<span class="fs-6">Km&sol;h</span></div>
-               </div>
-             </div>
-           </div>
-          `;
+           <div
+      style="--icon-src: url('https:${condition_icon}')"
+      class="card bg-glass rounded-4 text-white user-select-none"
+      aria-label="Weather card showing ${name} conditions"
+    >
+      <div class="card-body">
+        <div class="d-flex gap-2 justify-content-between">
+          <div class="w-50">
+            <h2
+              class="card-title fw-semibold d-flex align-items-center"
+              aria-label="Temperature: ${temp_c} degrees Celsius"
+            >
+              ${temp_c}&deg;<span
+                class="fs-6 text-primary-emphasis"
+                aria-hidden="true"
+                >C</span
+              >
+            </h2>
+            <p class="card-text" aria-label="Location: ${name}">${name}</p>
+          </div>
+
+          <h3
+            class="fw-bold fs-5 text-capitalize text-primary-emphasis main-title"
+            aria-label="Condition: ${condition_text}"
+          >
+            ${condition_text}
+          </h3>
+        </div>
+
+        <div
+          class="w-75 d-flex gap-3 fs-6 fw-semibold mt-4 pt-4 border-top border-primary-subtle"
+          aria-label="Additional weather details"
+        >
+          <div aria-label="Cloud coverage: ${cloud}%">
+            <i
+              class="fa-solid fa-cloud text-primary-emphasis me-1"
+              aria-hidden="true"
+            ></i
+            >${cloud}%
+          </div>
+          <div aria-label="Humidity: ${humidity}%">
+            <i
+              class="fa-solid fa-droplet text-primary-emphasis"
+              aria-hidden="true"
+            ></i>
+            ${humidity}%
+          </div>
+          <div aria-label="Wind speed: ${wind_kph} kilometers per hour">
+            <i
+              class="fa-solid fa-wind text-primary-emphasis"
+              aria-hidden="true"
+            ></i>
+            ${wind_kph}<span class="fs-6" aria-hidden="true">Km&sol;h</span>
+          </div>
+        </div>
+      </div>
+    </div>`;
 
     fragment.appendChild(currentWeatherCol);
   }
