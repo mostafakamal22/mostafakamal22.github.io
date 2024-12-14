@@ -23,6 +23,20 @@
 /* Re-setting Styles */
 body {
   font-family: var(--secondary-font);
+  background-image: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(rgba(0, 0, 0, 0.5)),
+      to(var(--cool-blue))
+    ),
+    url("../images/bg-cover.webp");
+  background-image: -o-linear-gradient(
+      top,
+      rgba(0, 0, 0, 0.5),
+      var(--cool-blue)
+    ),
+    url("../images/bg-cover.webp");
   background-image: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0.5),
@@ -64,7 +78,9 @@ h1 {
 
 .bg-glass {
   background-color: rgba(238, 225, 225, 0.25) !important;
+  -webkit-backdrop-filter: blur(5.5px);
   backdrop-filter: blur(5.5px);
+  -webkit-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -72,6 +88,26 @@ h1 {
 
 .desc {
   font-size: 1.2rem;
+}
+
+.form-control::-webkit-input-placeholder {
+  color: var(--storm-gray);
+  opacity: 1;
+}
+
+.form-control::-moz-placeholder {
+  color: var(--storm-gray);
+  opacity: 1;
+}
+
+.form-control:-ms-input-placeholder {
+  color: var(--storm-gray);
+  opacity: 1;
+}
+
+.form-control::-ms-input-placeholder {
+  color: var(--storm-gray);
+  opacity: 1;
 }
 
 .form-control::placeholder {
@@ -83,12 +119,10 @@ h1 {
   font-size: 14px;
 }
 
-.valid > .fa-circle-check {
-  display: block !important;
-}
-
 .list-group-item {
   cursor: pointer;
+  -webkit-transition: all 250ms ease-in-out;
+  -o-transition: all 250ms ease-in-out;
   transition: all 250ms ease-in-out;
 }
 
@@ -100,8 +134,8 @@ h1 {
 }
 
 #popular-cities .row {
-  --scrollbar-thumb: rgb(5, 44, 101) !important;
-  --scrollbar-track: transparent !important;
+  --scrollbar-thumb: rgb(5, 44, 101);
+  --scrollbar-track: transparent;
 
   scrollbar-width: thin;
   scrollbar-color: var(--scrollbar-thumb, initial)
