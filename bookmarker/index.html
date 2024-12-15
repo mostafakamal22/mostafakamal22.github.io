@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bookmark</title>
+
+    <link
+      rel="shortcut icon"
+      href="./images/bookmark.png"
+      type="image/x-icon"
+    />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@400;700&family=Pacifico&family=Righteous&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap Stylesheet -->
+    <link rel="stylesheet" href="./styles/bootstrap.min.css" />
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="./styles/index.css" />
+
+    <!-- Light Mode Stylesheet -->
+    <link rel="stylesheet" href="./styles/light.css" />
+  </head>
+
+  <body>
+    <!-- Main content -->
+    <main class="text-center container py-5">
+      <header class="mb-5">
+        <h1 class="main-title mx-auto">Bookmarker</h1>
+      </header>
+
+      <section class="py-5 add-bookmark">
+        <header class="mb-4">
+          <h2>
+            <i class="fa-solid fa-bookmark"></i>
+            Bookmark your favorite sites
+            <i class="fa-solid fa-bookmark"></i>
+          </h2>
+        </header>
+
+        <form id="add-bookmark-form" class="text-start">
+          <div class="mb-3">
+            <label for="siteName" class="form-label fw-semibold">
+              <i class="fa-solid fa-book-bookmark pe-1"></i>
+              Site Name</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="siteName"
+              placeholder="Site Name"
+              oninput="validateBookmark(this)"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="siteUrl" class="form-label fw-semibold">
+              <i class="fa-solid fa-link pe-1"></i>
+              Site URL</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="siteUrl"
+              placeholder="website Url"
+              oninput="validateBookmark(this)"
+            />
+          </div>
+
+          <button
+            type="button"
+            class="btn btn-primary d-block mt-4 mx-auto px-5 btn-orange"
+            onclick="addNewBookmark()"
+          >
+            Submit
+          </button>
+        </form>
+      </section>
+
+      <section>
+        <form
+          id="query-bookmark-form"
+          class="row g-1 g-md-3 align-items-center my-4"
+        >
+          <div class="col-auto">
+            <label for="bookmarkQuery" class="col-form-label fw-semibold">
+              <i class="fa-solid fa-magnifying-glass pe-1"></i>
+              Search Bookmarks</label
+            >
+          </div>
+          <div class="col-auto flex-grow-1">
+            <input
+              type="text"
+              id="bookmarkQuery"
+              class="form-control"
+              placeholder="Search bookmarks"
+              oninput="queryBookmarks(this)"
+            />
+          </div>
+        </form>
+
+        <div id="alert"></div>
+
+        <div class="overflow-x-auto">
+          <table
+            id="bookmark-table"
+            class="table table-striped overflow-x-scroll rounded-5"
+          >
+            <thead>
+              <tr>
+                <th scope="col">NO.</th>
+                <th scope="col">Website Name</th>
+                <th scope="col">Visit</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+              </tr>
+            </thead>
+
+            <tbody id="tableData"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <!-- Update bookmark modal -->
+    <div
+      class="modal fade"
+      id="updateBookmark"
+      tabindex="-1"
+      aria-labelledby="updateBookmark"
+      aria-hidden="true"
+    >
+      <div
+        class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable"
+      >
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="d-flex gap-2 me-3">
+              <span class="circle bg-danger"></span>
+              <span class="circle bg-warning"></span>
+              <span class="circle bg-success"></span>
+            </div>
+            <h5 class="modal-title fs-5 modal-heading">Update bookmark</h5>
+            <button
+              type="button"
+              class="btn ms-auto close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            >
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h6 class="fw-bold mb-4">
+              Update bookmark data and press update:-
+            </h6>
+
+            <form class="text-start">
+              <div class="mb-3">
+                <label for="updateSiteName" class="form-label">
+                  <i class="fa-solid fa-book-bookmark pe-2"></i>
+                  Site Name</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="updateSiteName"
+                  placeholder="Site Name"
+                  oninput="validateBookmark(this)"
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="updateSiteUrl" class="form-label">
+                  <i class="fa-solid fa-link pe-2"></i>
+                  Site URL</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="updateSiteUrl"
+                  placeholder="website Url"
+                  oninput="validateBookmark(this)"
+                />
+              </div>
+
+              <button
+                type="button"
+                class="btn btn-primary d-block mx-auto px-5 btn-orange"
+                onclick="updateBookmark()"
+              >
+                Update
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bookmark validation modal -->
+    <div
+      class="modal fade"
+      id="BookmarksValidationModal"
+      tabindex="-1"
+      aria-labelledby="BookmarksValidationModal"
+      aria-hidden="true"
+    >
+      <div
+        class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable"
+      >
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="d-flex gap-2 me-3">
+              <span class="circle bg-danger"></span>
+              <span class="circle bg-warning"></span>
+              <span class="circle bg-success"></span>
+            </div>
+            <h5 class="modal-title fs-5 modal-heading">Invalid inputs</h5>
+            <button
+              type="button"
+              class="btn ms-auto close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            >
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h6 class="fw-bold mb-4">
+              Site Name or Url is not valid, Please follow the rules below:
+            </h6>
+
+            <ul class="list-group mb-3">
+              <li class="list-group-item">
+                <i class="fa-regular fa-circle-right me-1"></i>
+                <span>Site name must contain at least 3 characters</span>
+
+                <div class="check-group">
+                  <i class="fa-solid fa-circle-xmark text-danger length"></i>
+                  <i class="fa-solid fa-circle-check text-success length"></i>
+                </div>
+              </li>
+
+              <li class="list-group-item">
+                <i class="fa-regular fa-circle-right me-1"></i>
+                <span>Site name must be unique</span>
+
+                <div class="check-group">
+                  <i class="fa-solid fa-circle-xmark text-danger unique"></i>
+                  <i class="fa-solid fa-circle-check text-success unique"></i>
+                </div>
+              </li>
+
+              <li class="list-group-item">
+                <i class="fa-regular fa-circle-right me-1"></i>
+                <span>Site URL must be a valid one</span>
+
+                <div class="check-group">
+                  <i class="fa-solid fa-circle-xmark text-danger url"></i>
+                  <i class="fa-solid fa-circle-check text-success url"></i>
+                </div>
+              </li>
+            </ul>
+
+            <div>
+              <h6 class="mb-2 fw-semibold">💡 URLs Tips</h6>
+              <ul class="list-group mb-3">
+                <li class="list-group-item">
+                  Add <strong>http://</strong> or <strong>https://</strong> if
+                  unsure.
+                </li>
+                <li class="list-group-item">
+                  Use <strong>www.</strong> for domains that need it.
+                </li>
+                <li class="list-group-item">
+                  Avoid spaces and special characters.
+                </li>
+              </ul>
+
+              <h6 class="mb-2 fw-semibold">✅ Valid URLs</h6>
+              <ul class="list-group mb-3">
+                <li class="list-group-item">http://example.com</li>
+                <li class="list-group-item">https://www.example.org</li>
+                <li class="list-group-item">www.subdomain.site</li>
+                <li class="list-group-item">example.net/path/to/page</li>
+                <li class="list-group-item">
+                  https://example.com/resource?id=123
+                </li>
+              </ul>
+
+              <h6 class="mb-2 fw-semibold">❌ Invalid URLs</h6>
+              <ul class="list-group mb-3">
+                <li class="list-group-item">
+                  <strong>example</strong> → Missing protocol/TLD
+                </li>
+                <li class="list-group-item">
+                  <strong>http:/example.com</strong> → Malformed protocol
+                </li>
+                <li class="list-group-item">
+                  <strong>www.example .com</strong> → Contains a space
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+      <div
+        id="toast"
+        class="toast text-bg-success"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="toast-header">
+          <img
+            src="./images/bookmark.png"
+            class="rounded me-2"
+            style="width: 25px"
+            alt="bookmark"
+          />
+          <strong class="me-auto">Bookmarker</strong>
+
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="toast-body" id="toast-body"></div>
+      </div>
+    </div>
+
+    <!-- Dark Mode toggle -->
+    <div class="toggle px-3 py-2 text-start rounded">
+      <label for="color-mode" class="toggle-dark text-white">
+        <i class="fa-solid fa-moon" aria-hidden="true"></i>
+      </label>
+      <label for="color-mode" class="toggle-light text-white">
+        <i class="fa-regular fa-sun" aria-hidden="true"></i
+      ></label>
+      <input
+        type="checkbox"
+        id="color-mode"
+        name="color-mode"
+        class="toggle-checkbox"
+        hidden=""
+        aria-hidden=""
+      />
+    </div>
+
+    <!-- Bootstrap Scripts -->
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/jquery-2.1.1.js"></script>
+
+    <!-- Fontawesome Scripts -->
+    <script src="./js/font-awesome.js"></script>
+
+    <!-- Main Script -->
+    <script src="./js/index.js"></script>
+  </body>
+</html>
