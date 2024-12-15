@@ -7,6 +7,8 @@
   --secondary-text-color: #999;
   --alt-text-color: #748182;
   --bg-grey: #f7f7f7;
+
+  --navbar-links-color: #f7f7f7;
 }
 
 /* Resitting Styles */
@@ -116,7 +118,7 @@ p {
   font-size: 1.1rem;
   font-weight: bold;
   letter-spacing: 0.05em;
-  color: var(--bg-grey);
+  color: var(--navbar-links-color);
 }
 
 .navbar-toggler:focus,
@@ -127,11 +129,11 @@ p {
 }
 
 .nav-link {
-  --bg-color: var(--bg-grey);
+  --bg-color: var(--navbar-links-color);
   font-size: 0.9rem;
   font-weight: 600;
   position: relative;
-  color: var(--bg-grey);
+  color: var(--navbar-links-color);
 }
 
 .nav-link::after {
@@ -152,8 +154,31 @@ p {
 
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
-  color: var(--bg-grey);
+  color: var(--navbar-links-color);
   background-color: transparent;
+}
+
+.navbar-toggler {
+  color: var(--navbar-links-color) !important;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar-collapse {
+    background-color: var(--bg-grey);
+  }
+
+  .navbar-collapse .nav-link {
+    color: var(--primary-text-color);
+  }
+
+  .navbar-collapse .nav-link::after {
+    background-color: var(--primary-text-color);
+  }
+
+  .nav-pills .nav-link.active,
+  .nav-pills .show > .nav-link {
+    color: var(--primary-text-color);
+  }
 }
 
 @media screen and (min-width: 992px) {
