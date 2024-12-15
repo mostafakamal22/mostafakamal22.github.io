@@ -103,11 +103,20 @@ p {
 }
 
 /* Navbar Styles */
+#navbar-header {
+  transition: all 250ms ease-in-out;
+}
+
+.header-scrolled {
+  background-color: var(--bg-grey);
+  padding: 0 !important;
+}
+
 .brand {
   font-size: 1.1rem;
   font-weight: bold;
   letter-spacing: 0.05em;
-  color: inherit;
+  color: var(--bg-grey);
 }
 
 .navbar-toggler:focus,
@@ -118,10 +127,11 @@ p {
 }
 
 .nav-link {
+  --bg-color: var(--bg-grey);
   font-size: 0.9rem;
   font-weight: 600;
   position: relative;
-  color: var(--primary-text-color);
+  color: var(--bg-grey);
 }
 
 .nav-link::after {
@@ -130,7 +140,7 @@ p {
   width: 0px;
   height: 2px;
   margin: auto;
-  background-color: var(--primary-text-color);
+  background-color: var(--bg-color);
   -webkit-transition: all 550ms ease;
   -o-transition: all 550ms ease;
   transition: all 550ms ease;
@@ -142,7 +152,7 @@ p {
 
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
-  color: var(--primary-text-color);
+  color: var(--bg-grey);
   background-color: transparent;
 }
 
