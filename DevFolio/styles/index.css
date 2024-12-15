@@ -82,6 +82,10 @@ ul {
 }
 
 /* Navbar Styles */
+#navbar-header {
+  transition: all 250ms ease-in-out;
+}
+
 .navbar-brand {
   letter-spacing: 0.05em;
 }
@@ -133,6 +137,11 @@ ul {
 .dropdown:hover .dropdown-menu {
   display: block;
   margin-top: 0;
+}
+
+.header-scrolled {
+  background: rgba(0, 0, 0, 0.9);
+  padding: 0 !important;
 }
 
 /* Hero Styles */
