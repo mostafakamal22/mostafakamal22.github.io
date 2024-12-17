@@ -107,3 +107,20 @@ h6 {
 .card-text {
   font-size: 12px;
 }
+
+/* Game Details Section styles */
+#game-details {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  background-color: var(--bg-main-color);
+  overflow-y: scroll;
+}
+
+.close-btn:hover {
+  color: var(--primary-text-color) !important;
+}
+
+.game-desc {
+  font-size: 14px;
+}
