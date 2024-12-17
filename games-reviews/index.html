@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game Reviews</title>
+
+    <link rel="shortcut icon" href="./images/logo-sm.png" type="image/x-icon" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Nerko+One:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap Stylesheet -->
+    <link rel="stylesheet" href="./styles/bootstrap.min.css" />
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="./styles/index.css" />
+  </head>
+
+  <body>
+    <!-- Main content -->
+    <main class="container">
+      <section>
+        <img
+          class="w-100 cover"
+          src="./images/wraper.png"
+          alt="background cover"
+        />
+        <header id="navbar-header" class="mb-5">
+          <nav class="navbar navbar-expand-md rounded-4 px-3">
+            <a class="navbar-brand" href="#"
+              ><h5
+                class="text-uppercase fw-light d-flex justify-content-center align-items-center gap-1"
+              >
+                <img
+                  src="./images/logo-sm.png"
+                  alt="logo"
+                  width="40"
+                  height="40"
+                />
+                <span>Games Review</span>
+              </h5></a
+            >
+            <button
+              class="navbar-toggler d-lg-none"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapsibleNavId"
+              aria-controls="collapsibleNavId"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div
+              class="collapse navbar-collapse justify-content-end"
+              id="collapsibleNavId"
+            >
+              <!-- Nav tabs -->
+              <ul
+                class="nav nav-tabs flex-column flex-md-row"
+                id="myTab"
+                role="tablist"
+              >
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link active"
+                    id="mmorpg-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#mmorpg"
+                    type="button"
+                    role="tab"
+                    aria-controls="mmorpg"
+                    aria-selected="true"
+                  >
+                    Mmorpg
+                  </button>
+                </li>
+
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link"
+                    id="shooter-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#shooter"
+                    type="button"
+                    role="tab"
+                    aria-controls="shooter"
+                    aria-selected="false"
+                  >
+                    Shooter
+                  </button>
+                </li>
+
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link"
+                    id="sailing-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#sailing"
+                    type="button"
+                    role="tab"
+                    aria-controls="sailing"
+                    aria-selected="false"
+                  >
+                    Sailing
+                  </button>
+                </li>
+
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link"
+                    id="permadeath-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#permadeath"
+                    type="button"
+                    role="tab"
+                    aria-controls="permadeath"
+                    aria-selected="false"
+                  >
+                    Permadeath
+                  </button>
+                </li>
+
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link"
+                    id="superhero-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#superhero"
+                    type="button"
+                    role="tab"
+                    aria-controls="superhero"
+                    aria-selected="false"
+                  >
+                    Superhero
+                  </button>
+                </li>
+
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link"
+                    id="pixel-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#pixel"
+                    type="button"
+                    role="tab"
+                    aria-controls="pixel"
+                    aria-selected="false"
+                  >
+                    Pixel
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </header>
+
+        <!-- Games List -->
+        <div class="tab-content">
+          <div
+            class="tab-pane fade show active"
+            id="mmorpg"
+            role="tabpanel"
+            aria-labelledby="mmorpg-tab"
+            tabindex="0"
+          >
+            <div class="row g-3">
+              <div class="col-md-3">
+                <div class="card bg-transparent">
+                  <img
+                    class="card-img-top"
+                    src="https://www.freetogame.com/g/599/thumbnail.jpg"
+                    alt="Game Title"
+                  />
+
+                  <div class="card-body">
+                    <h6
+                      class="card-title d-flex justify-content-between align-items-center"
+                    >
+                      <span>Marvel Rivals</span>
+                      <span class="badge text-bg-primary">Free</span>
+                    </h6>
+
+                    <p class="card-text text-white text-center opacity-50 mt-2">
+                      A,free-to-play,superhero,team,shooter,from,NetEase.
+                    </p>
+                  </div>
+
+                  <div
+                    class="card-footer d-flex justify-content-between align-items-center"
+                  >
+                    <span class="badge bg-secondary">Shooter</span>
+                    <span class="badge bg-secondary">PC (Windows)</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card bg-transparent">
+                  <img
+                    class="card-img-top"
+                    src="https://www.freetogame.com/g/599/thumbnail.jpg"
+                    alt="Game Title"
+                  />
+
+                  <div class="card-body">
+                    <h6
+                      class="card-title d-flex justify-content-between align-items-center"
+                    >
+                      <span>Marvel Rivals</span>
+                      <span class="badge text-bg-primary">Free</span>
+                    </h6>
+
+                    <p class="card-text text-white text-center opacity-50 mt-2">
+                      A,free-to-play,superhero,team,shooter,from,NetEase.
+                    </p>
+                  </div>
+
+                  <div
+                    class="card-footer d-flex justify-content-between align-items-center"
+                  >
+                    <span class="badge bg-secondary">Shooter</span>
+                    <span class="badge bg-secondary">PC (Windows)</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card bg-transparent">
+                  <img
+                    class="card-img-top"
+                    src="https://www.freetogame.com/g/599/thumbnail.jpg"
+                    alt="Game Title"
+                  />
+
+                  <div class="card-body">
+                    <h6
+                      class="card-title d-flex justify-content-between align-items-center"
+                    >
+                      <span>Marvel Rivals</span>
+                      <span class="badge text-bg-primary">Free</span>
+                    </h6>
+
+                    <p class="card-text text-white text-center opacity-50 mt-2">
+                      A,free-to-play,superhero,team,shooter,from,NetEase.
+                    </p>
+                  </div>
+
+                  <div
+                    class="card-footer d-flex justify-content-between align-items-center"
+                  >
+                    <span class="badge bg-secondary">Shooter</span>
+                    <span class="badge bg-secondary">PC (Windows)</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card bg-transparent">
+                  <img
+                    class="card-img-top"
+                    src="https://www.freetogame.com/g/599/thumbnail.jpg"
+                    alt="Game Title"
+                  />
+
+                  <div class="card-body">
+                    <h6
+                      class="card-title d-flex justify-content-between align-items-center"
+                    >
+                      <span>Marvel Rivals</span>
+                      <span class="badge text-bg-primary">Free</span>
+                    </h6>
+
+                    <p class="card-text text-white text-center opacity-50 mt-2">
+                      A,free-to-play,superhero,team,shooter,from,NetEase.
+                    </p>
+                  </div>
+
+                  <div
+                    class="card-footer d-flex justify-content-between align-items-center"
+                  >
+                    <span class="badge bg-secondary">Shooter</span>
+                    <span class="badge bg-secondary">PC (Windows)</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card bg-transparent">
+                  <img
+                    class="card-img-top"
+                    src="https://www.freetogame.com/g/599/thumbnail.jpg"
+                    alt="Game Title"
+                  />
+
+                  <div class="card-body">
+                    <h6
+                      class="card-title d-flex justify-content-between align-items-center"
+                    >
+                      <span>Marvel Rivals</span>
+                      <span class="badge text-bg-primary">Free</span>
+                    </h6>
+
+                    <p class="card-text text-white text-center opacity-50 mt-2">
+                      A,free-to-play,superhero,team,shooter,from,NetEase.
+                    </p>
+                  </div>
+
+                  <div
+                    class="card-footer d-flex justify-content-between align-items-center"
+                  >
+                    <span class="badge bg-secondary">Shooter</span>
+                    <span class="badge bg-secondary">PC (Windows)</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card bg-transparent">
+                  <img
+                    class="card-img-top"
+                    src="https://www.freetogame.com/g/599/thumbnail.jpg"
+                    alt="Game Title"
+                  />
+
+                  <div class="card-body">
+                    <h6
+                      class="card-title d-flex justify-content-between align-items-center"
+                    >
+                      <span>Marvel Rivals</span>
+                      <span class="badge text-bg-primary">Free</span>
+                    </h6>
+
+                    <p class="card-text text-white text-center opacity-50 mt-2">
+                      A,free-to-play,superhero,team,shooter,from,NetEase.
+                    </p>
+                  </div>
+
+                  <div
+                    class="card-footer d-flex justify-content-between align-items-center"
+                  >
+                    <span class="badge bg-secondary">Shooter</span>
+                    <span class="badge bg-secondary">PC (Windows)</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card bg-transparent">
+                  <img
+                    class="card-img-top"
+                    src="https://www.freetogame.com/g/599/thumbnail.jpg"
+                    alt="Game Title"
+                  />
+
+                  <div class="card-body">
+                    <h6
+                      class="card-title d-flex justify-content-between align-items-center"
+                    >
+                      <span>Marvel Rivals</span>
+                      <span class="badge text-bg-primary">Free</span>
+                    </h6>
+
+                    <p class="card-text text-white text-center opacity-50 mt-2">
+                      A,free-to-play,superhero,team,shooter,from,NetEase.
+                    </p>
+                  </div>
+
+                  <div
+                    class="card-footer d-flex justify-content-between align-items-center"
+                  >
+                    <span class="badge bg-secondary">Shooter</span>
+                    <span class="badge bg-secondary">PC (Windows)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="tab-pane fade"
+            id="shooter"
+            role="tabpanel"
+            aria-labelledby="shooter-tab"
+            tabindex="0"
+          >
+            <div class="row g-3">
+              <div class="col-md-3">
+                <div class="card bg-transparent">
+                  <img
+                    class="card-img-top"
+                    src="https://www.freetogame.com/g/599/thumbnail.jpg"
+                    alt="Game Title"
+                  />
+
+                  <div class="card-body">
+                    <h6
+                      class="card-title d-flex justify-content-between align-items-center"
+                    >
+                      <span>Marvel Rivals</span>
+                      <span class="badge text-bg-primary">Free</span>
+                    </h6>
+
+                    <p class="card-text text-white text-center opacity-50 mt-2">
+                      A,free-to-play,superhero,team,shooter,from,NetEase.
+                    </p>
+                  </div>
+
+                  <div
+                    class="card-footer d-flex justify-content-between align-items-center"
+                  >
+                    <span class="badge bg-secondary">Shooter</span>
+                    <span class="badge bg-secondary">PC (Windows)</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card bg-transparent">
+                  <img
+                    class="card-img-top"
+                    src="https://www.freetogame.com/g/599/thumbnail.jpg"
+                    alt="Game Title"
+                  />
+
+                  <div class="card-body">
+                    <h6
+                      class="card-title d-flex justify-content-between align-items-center"
+                    >
+                      <span>Marvel Rivals</span>
+                      <span class="badge text-bg-primary">Free</span>
+                    </h6>
+
+                    <p class="card-text text-white text-center opacity-50 mt-2">
+                      A,free-to-play,superhero,team,shooter,from,NetEase.
+                    </p>
+                  </div>
+
+                  <div
+                    class="card-footer d-flex justify-content-between align-items-center"
+                  >
+                    <span class="badge bg-secondary">Shooter</span>
+                    <span class="badge bg-secondary">PC (Windows)</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card bg-transparent">
+                  <img
+                    class="card-img-top"
+                    src="https://www.freetogame.com/g/599/thumbnail.jpg"
+                    alt="Game Title"
+                  />
+
+                  <div class="card-body">
+                    <h6
+                      class="card-title d-flex justify-content-between align-items-center"
+                    >
+                      <span>Marvel Rivals</span>
+                      <span class="badge text-bg-primary">Free</span>
+                    </h6>
+
+                    <p class="card-text text-white text-center opacity-50 mt-2">
+                      A,free-to-play,superhero,team,shooter,from,NetEase.
+                    </p>
+                  </div>
+
+                  <div
+                    class="card-footer d-flex justify-content-between align-items-center"
+                  >
+                    <span class="badge bg-secondary">Shooter</span>
+                    <span class="badge bg-secondary">PC (Windows)</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card bg-transparent">
+                  <img
+                    class="card-img-top"
+                    src="https://www.freetogame.com/g/599/thumbnail.jpg"
+                    alt="Game Title"
+                  />
+
+                  <div class="card-body">
+                    <h6
+                      class="card-title d-flex justify-content-between align-items-center"
+                    >
+                      <span>Marvel Rivals</span>
+                      <span class="badge text-bg-primary">Free</span>
+                    </h6>
+
+                    <p class="card-text text-white text-center opacity-50 mt-2">
+                      A,free-to-play,superhero,team,shooter,from,NetEase.
+                    </p>
+                  </div>
+
+                  <div
+                    class="card-footer d-flex justify-content-between align-items-center"
+                  >
+                    <span class="badge bg-secondary">Shooter</span>
+                    <span class="badge bg-secondary">PC (Windows)</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card bg-transparent">
+                  <img
+                    class="card-img-top"
+                    src="https://www.freetogame.com/g/599/thumbnail.jpg"
+                    alt="Game Title"
+                  />
+
+                  <div class="card-body">
+                    <h6
+                      class="card-title d-flex justify-content-between align-items-center"
+                    >
+                      <span>Marvel Rivals</span>
+                      <span class="badge text-bg-primary">Free</span>
+                    </h6>
+
+                    <p class="card-text text-white text-center opacity-50 mt-2">
+                      A,free-to-play,superhero,team,shooter,from,NetEase.
+                    </p>
+                  </div>
+
+                  <div
+                    class="card-footer d-flex justify-content-between align-items-center"
+                  >
+                    <span class="badge bg-secondary">Shooter</span>
+                    <span class="badge bg-secondary">PC (Windows)</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card bg-transparent">
+                  <img
+                    class="card-img-top"
+                    src="https://www.freetogame.com/g/599/thumbnail.jpg"
+                    alt="Game Title"
+                  />
+
+                  <div class="card-body">
+                    <h6
+                      class="card-title d-flex justify-content-between align-items-center"
+                    >
+                      <span>Marvel Rivals</span>
+                      <span class="badge text-bg-primary">Free</span>
+                    </h6>
+
+                    <p class="card-text text-white text-center opacity-50 mt-2">
+                      A,free-to-play,superhero,team,shooter,from,NetEase.
+                    </p>
+                  </div>
+
+                  <div
+                    class="card-footer d-flex justify-content-between align-items-center"
+                  >
+                    <span class="badge bg-secondary">Shooter</span>
+                    <span class="badge bg-secondary">PC (Windows)</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card bg-transparent">
+                  <img
+                    class="card-img-top"
+                    src="https://www.freetogame.com/g/599/thumbnail.jpg"
+                    alt="Game Title"
+                  />
+
+                  <div class="card-body">
+                    <h6
+                      class="card-title d-flex justify-content-between align-items-center"
+                    >
+                      <span>Marvel Rivals</span>
+                      <span class="badge text-bg-primary">Free</span>
+                    </h6>
+
+                    <p class="card-text text-white text-center opacity-50 mt-2">
+                      A,free-to-play,superhero,team,shooter,from,NetEase.
+                    </p>
+                  </div>
+
+                  <div
+                    class="card-footer d-flex justify-content-between align-items-center"
+                  >
+                    <span class="badge bg-secondary">Shooter</span>
+                    <span class="badge bg-secondary">PC (Windows)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="tab-pane fade"
+            id="sailing"
+            role="tabpanel"
+            aria-labelledby="sailing-tab"
+            tabindex="0"
+          >
+            sailing
+          </div>
+
+          <div
+            class="tab-pane fade"
+            id="permadeath"
+            role="tabpanel"
+            aria-labelledby="permadeath-tab"
+            tabindex="0"
+          >
+            permadeath
+          </div>
+
+          <div
+            class="tab-pane fade"
+            id="superhero"
+            role="tabpanel"
+            aria-labelledby="superhero-tab"
+            tabindex="0"
+          >
+            superhero
+          </div>
+
+          <div
+            class="tab-pane fade"
+            id="pixel"
+            role="tabpanel"
+            aria-labelledby="pixel-tab"
+            tabindex="0"
+          >
+            pixel
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Bootstrap Scripts -->
+    <script src="./js/lib/bootstrap.bundle.min.js"></script>
+    <script src="./js/lib/jquery-2.1.1.js"></script>
+
+    <!-- Fontawesome Scripts -->
+    <script src="./js/lib/font-awesome.js"></script>
+
+    <!-- Main Script -->
+    <script src="./js/index.js"></script>
+  </body>
+</html>

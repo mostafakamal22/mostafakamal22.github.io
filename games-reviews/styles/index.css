@@ -1,0 +1,109 @@
+/* Root styles */
+:root {
+  --primary-font: "Comfortaa", cursive;
+  --secondary-font: "Nerko One", cursive;
+
+  --bg-main-color: #272b30;
+  --bg-secondary-color: #32383e;
+  --nav-bg-color: #3a497b;
+
+  --primary-text-color: #fff;
+
+  --active-link-color: #09c;
+  --btn-color: #272729;
+}
+
+/* Re-setting Styles */
+body {
+  font-family: var(--primary-font);
+  color: var(--primary-text-color);
+  background-color: var(--bg-main-color);
+  overflow-x: hidden;
+}
+
+main {
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(rgba(0, 0, 0, 0)),
+    to(var(--bg-main-color))
+  );
+  background-image: -o-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0),
+    var(--bg-main-color)
+  );
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0),
+    var(--bg-main-color)
+  );
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--secondary-font);
+  color: var(--primary-text-color) !important;
+}
+
+.cover {
+  max-height: 30vh;
+  object-fit: cover;
+}
+
+/* Shared styles */
+
+/* Navbar Styles */
+#navbar-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.navbar {
+  background-color: var(--nav-bg-color);
+  box-shadow: 0 0 10px rgb(0 0 0 / 0.7);
+}
+
+.nav-tabs {
+  border: none;
+}
+
+.nav-tabs .nav-link {
+  padding-inline: 10px !important;
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--primary-text-color);
+  border: none;
+  text-transform: uppercase;
+  transition: all 350ms ease-in-out;
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-link:hover {
+  color: var(--active-link-color);
+  background-color: transparent;
+  border: none;
+}
+
+/* Games List Section Styles */
+.card {
+  cursor: pointer;
+  filter: grayscale(0.7);
+  transition: all 350ms ease-in-out;
+}
+
+.card:hover,
+.card:focus {
+  filter: grayscale(0);
+  scale: 1.05;
+}
+
+.card-text {
+  font-size: 12px;
+}
