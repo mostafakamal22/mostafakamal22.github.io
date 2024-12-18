@@ -5,16 +5,16 @@ const navLinks = document.querySelectorAll(".nav-link");
 
 // Events
 document.addEventListener("DOMContentLoaded", async () => {
-  const Ui = new UI("mmorpg");
+  const Ui = new UI();
 
-  await Ui.displayGamesList();
+  await Ui.displayGamesList("mmorpg");
 });
 
 navLinks.forEach((link) => {
   link.addEventListener("click", async function (e) {
     const category = this.getAttribute("aria-controls");
-    const Ui = new UI(category);
+    const Ui = new UI();
 
-    await Ui.displayGamesList();
+    await Ui.displayGamesList(category);
   });
 });
