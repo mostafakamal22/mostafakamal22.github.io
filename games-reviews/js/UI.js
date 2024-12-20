@@ -10,32 +10,29 @@ const loadingSpinner = document.getElementById("loading-spinner");
 
 class UI {
   async fetchData(dataType, value) {
-    // const url =
-    //   dataType === "list"
-    //     ? `https://free-to-play-games-database.p.rapidapi.com/api/games?category=${value}`
-    //     : `https://free-to-play-games-database.p.rapidapi.com/api/game?id=${value}`;
-
-    // const options = {
-    //   method: "GET",
-    //   headers: {
-    //     "x-rapidapi-key": "3b6b50d58amsh1e05934512d9fa2p11d79cjsn2763e54d1ef4",
-    //     "x-rapidapi-host": "free-to-play-games-database.p.rapidapi.com",
-    //   },
-    // };
-
     const url =
       dataType === "list"
-        ? `https://www.freetogame.com/api/games?category=${value}`
-        : `https://www.freetogame.com/api/game?id=${value}`;
+        ? `https://free-to-play-games-database.p.rapidapi.com/api/games?category=${value}`
+        : `https://free-to-play-games-database.p.rapidapi.com/api/game?id=${value}`;
+
+    const options = {
+      method: "GET",
+      headers: {
+        "x-rapidapi-key": "3b6b50d58amsh1e05934512d9fa2p11d79cjsn2763e54d1ef4",
+        "x-rapidapi-host": "free-to-play-games-database.p.rapidapi.com",
+      },
+    };
+
+    // const url =
+    //   dataType === "list"
+    //     ? `https://www.freetogame.com/api/games?category=${value}`
+    //     : `https://www.freetogame.com/api/game?id=${value}`;
 
     // Show loading spinner
     this.toggleLoadingSpinner();
 
     try {
-      const response = await fetch(
-        url
-        // options
-      );
+      const response = await fetch(url, options);
       const result = await response.json();
 
       return result;
