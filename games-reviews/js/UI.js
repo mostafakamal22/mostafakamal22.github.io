@@ -55,7 +55,7 @@ class UI {
             role="img"
           ></i>
           <span class="error-message">
-            Something went wrong. Please refresh the page and try again.
+            Something went wrong. Try refresh the page.
           </span>
         </div>`;
   }
