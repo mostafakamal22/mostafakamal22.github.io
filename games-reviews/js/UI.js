@@ -51,10 +51,10 @@ class UI {
     // Show error message
     container.innerHTML = `<div class="alert alert-danger d-flex align-items-center" role="alert">
           <i
-            class="fa-solid fa-exclamation-triangle flex-shrink-0 mb-1 me-1"
+            class="fa-solid fa-exclamation-triangle flex-shrink-0 mb-1 me-2"
             role="img"
           ></i>
-          <span>
+          <span class="error-message">
             Something went wrong. Please refresh the page and try again.
           </span>
         </div>`;

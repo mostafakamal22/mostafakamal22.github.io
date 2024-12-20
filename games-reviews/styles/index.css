@@ -130,3 +130,7 @@ h6 {
   inset: 0;
   z-index: 100;
 }
+
+.error-message {
+  font-size: 14px;
+}
