@@ -6,29 +6,62 @@ const gamesTabsContainers = document.querySelectorAll(".tab-pane");
 
 const gameDetailsSection = document.getElementById("game-details");
 
+const loadingSpinner = document.getElementById("loading-spinner");
+
 class UI {
   async fetchData(dataType, value) {
+    // const url =
+    //   dataType === "list"
+    //     ? `https://free-to-play-games-database.p.rapidapi.com/api/games?category=${value}`
+    //     : `https://free-to-play-games-database.p.rapidapi.com/api/game?id=${value}`;
+
+    // const options = {
+    //   method: "GET",
+    //   headers: {
+    //     "x-rapidapi-key": "3b6b50d58amsh1e05934512d9fa2p11d79cjsn2763e54d1ef4",
+    //     "x-rapidapi-host": "free-to-play-games-database.p.rapidapi.com",
+    //   },
+    // };
+
     const url =
       dataType === "list"
-        ? `https://free-to-play-games-database.p.rapidapi.com/api/games?category=${value}`
-        : `https://free-to-play-games-database.p.rapidapi.com/api/game?id=${value}`;
+        ? `https://www.freetogame.com/api/games?category=${value}`
+        : `https://www.freetogame.com/api/game?id=${value}`;
 
-    const options = {
-      method: "GET",
-      headers: {
-        "x-rapidapi-key": "3b6b50d58amsh1e05934512d9fa2p11d79cjsn2763e54d1ef4",
-        "x-rapidapi-host": "free-to-play-games-database.p.rapidapi.com",
-      },
-    };
+    // Show loading spinner
+    this.toggleLoadingSpinner();
 
     try {
-      const response = await fetch(url, options);
+      const response = await fetch(
+        url
+        // options
+      );
       const result = await response.json();
 
       return result;
     } catch (error) {
       console.error(error);
+    } finally {
+      // Hide loading spinner
+      this.toggleLoadingSpinner();
     }
+  }
+
+  handleFetchDataError(container) {
+    // Show error message
+    container.innerHTML = `<div class="alert alert-danger d-flex align-items-center" role="alert">
+          <i
+            class="fa-solid fa-exclamation-triangle flex-shrink-0 mb-1 me-1"
+            role="img"
+          ></i>
+          <span>
+            Something went wrong. Please refresh the page and try again.
+          </span>
+        </div>`;
+  }
+
+  toggleLoadingSpinner() {
+    loadingSpinner.classList.toggle("d-none");
   }
 
   async handleGameCardClick(gameID) {
@@ -48,42 +81,32 @@ class UI {
       (t) => t.id?.toLowerCase() === category?.toLowerCase()
     );
 
-    if (
-      !gamesList ||
-      !Array.isArray(gamesList) ||
-      gamesList.length === 0 ||
-      !gameTabContainer
-    ) {
-      console.warn("No games found or container not found.");
+    if (!gamesList || !Array.isArray(gamesList) || gamesList.length === 0) {
+      console.log("No games found.");
+      this.handleFetchDataError(gameTabContainer);
       return;
     }
 
-    // Create a row to hold game cards
     const row = document.createElement("div");
     row.classList.add("row", "g-3");
 
-    // Use a document fragment for better performance
     const fragment = document.createDocumentFragment();
 
     for (let i = 0; i < gamesList.length; i++) {
       const { id, title, thumbnail, short_description, genre, platform } =
         gamesList[i];
 
-      // Create column
       const col = document.createElement("div");
       col.classList.add("col-md-3");
 
-      // Create game card
       const gameCard = document.createElement("div");
       gameCard.classList.add("card", "bg-transparent");
       gameCard.setAttribute("data-game-id", `${id}`);
 
-      // Add click event listener to the card
       gameCard.addEventListener("click", async () => {
         await this.handleGameCardClick(`+${id}`);
       });
 
-      // Add inner content to the game card
       gameCard.innerHTML = `
         <img
           class="card-img-top"
@@ -106,41 +129,44 @@ class UI {
         </div>
       `;
 
-      // Append game card to column
       col.appendChild(gameCard);
 
-      // Append column to fragment
       fragment.appendChild(col);
     }
 
-    // Append fragment to the row
     row.appendChild(fragment);
 
-    // Append row to the game tab container
     gameTabContainer.appendChild(row);
   }
 
   async displayGameDetails(gameID) {
-    // Fetch game details
-    const { title, thumbnail, status, description, game_url, genre, platform } =
-      await this.fetchData("game-detail", gameID);
+    const gameData = await this.fetchData("game-detail", gameID);
 
-    // Create container
+    if (!gameData) {
+      console.log("Game data not found.");
+      const container = document.createElement("div");
+      container.classList.add("container", "position-relative", "py-4");
+
+      gameDetailsSection.appendChild(container);
+
+      this.handleFetchDataError(gameDetailsSection);
+      return;
+    }
+
+    const { title, thumbnail, status, description, game_url, genre, platform } =
+      gameData;
+
     const container = document.createElement("div");
     container.classList.add("container", "position-relative", "py-4");
 
-    // Create close button
     const closeButton = document.createElement("button");
     closeButton.classList.add(
-      "btn",
-      "fs-2",
-      "text-secondary",
+      "btn-close",
       "position-absolute",
       "end-0",
-      "me-1",
-      "close-btn"
+      "me-1"
     );
-    closeButton.innerHTML = `<i class="fa-solid fa-xmark"></i>`;
+
     closeButton.addEventListener("click", () => {
       // Hide game details section
       const gameDetails = new GameDetails();
@@ -152,12 +178,10 @@ class UI {
       gamesList.displayGamesListSection();
     });
 
-    // Create header
     const header = document.createElement("header");
     header.classList.add("mb-5");
     header.innerHTML = `<h2>Game Details</h2>`;
 
-    // Create content rows
     const row = document.createElement("div");
     row.classList.add("row", "g-4");
 
@@ -182,14 +206,12 @@ class UI {
         </button>
       `;
 
-    // Assemble content
     row.appendChild(thumbnailCol);
     row.appendChild(detailsCol);
     container.appendChild(closeButton);
     container.appendChild(header);
     container.appendChild(row);
 
-    // Append to the game details section
     gameDetailsSection.appendChild(container);
   }
 }

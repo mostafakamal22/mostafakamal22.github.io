@@ -124,3 +124,9 @@ h6 {
 .game-desc {
   font-size: 14px;
 }
+
+.spinner {
+  background-color: rgb(50, 56, 62, 0.5);
+  inset: 0;
+  z-index: 100;
+}
