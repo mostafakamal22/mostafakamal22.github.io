@@ -97,7 +97,7 @@ class UI {
       col.classList.add("col-md-3");
 
       const gameCard = document.createElement("div");
-      gameCard.classList.add("card", "bg-transparent");
+      gameCard.classList.add("card", "bg-transparent", "rounded-2");
       gameCard.setAttribute("data-game-id", `${id}`);
 
       gameCard.addEventListener("click", async () => {
