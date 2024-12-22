@@ -159,9 +159,10 @@ class UI {
     const closeButton = document.createElement("button");
     closeButton.classList.add(
       "btn-close",
+      "btn-close-white",
       "position-absolute",
       "end-0",
-      "me-1"
+      "me-2"
     );
 
     closeButton.addEventListener("click", () => {
