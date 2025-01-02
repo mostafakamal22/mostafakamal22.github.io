@@ -1,11 +1,6 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./providers/router";
 
 export default function App() {
-  return (
-    <div>
-      <FontAwesomeIcon icon={faStar} size="6x" />
-      Homesd
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
