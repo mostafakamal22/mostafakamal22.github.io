@@ -2,3 +2,17 @@
   --main-color: #1abc9c;
   --second-color: #2c3e50;
 }
+
+.navbar {
+  background-color: var(--second-color);
+  transition: all 150ms ease-in-out;
+}
+
+.nav-link {
+  transition: all 150ms ease-in-out;
+}
+
+.nav-link.active {
+  background-color: var(--main-color);
+  color: white;
+}

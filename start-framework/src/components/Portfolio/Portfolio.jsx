@@ -1,3 +1,3 @@
 export default function Portfolio() {
-  return <div>Portfolio</div>;
+  return <div className="min-vh-100">Portfolio</div>;
 }
