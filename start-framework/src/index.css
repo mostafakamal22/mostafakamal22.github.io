@@ -16,3 +16,7 @@
   background-color: var(--main-color);
   color: white;
 }
+
+.about {
+  background-color: var(--main-color);
+}

@@ -7,7 +7,7 @@ export default function Layout() {
     <>
       <Navbar />
 
-      <main className="container">
+      <main>
         <Outlet />
       </main>
 
