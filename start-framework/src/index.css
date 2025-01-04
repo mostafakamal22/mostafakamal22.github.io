@@ -6,6 +6,7 @@
 
 body {
   overflow-x: hidden;
+  background-color: var(--second-color);
 }
 
 .navbar {
@@ -33,4 +34,8 @@ footer {
 
 .copyright {
   background-color: var(--footer-bg-color);
+}
+
+.home {
+  background-color: var(--main-color);
 }
