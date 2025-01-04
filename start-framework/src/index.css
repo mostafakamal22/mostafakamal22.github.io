@@ -1,6 +1,11 @@
 :root {
   --main-color: #1abc9c;
   --second-color: #2c3e50;
+  --footer-bg-color: #1a252f;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 .navbar {
@@ -19,4 +24,13 @@
 
 .about {
   background-color: var(--main-color);
+}
+
+footer {
+  background-color: var(--second-color);
+  color: white;
+}
+
+.copyright {
+  background-color: var(--footer-bg-color);
 }
