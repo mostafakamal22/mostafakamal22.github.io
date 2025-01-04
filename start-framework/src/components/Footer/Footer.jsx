@@ -25,7 +25,7 @@ export default function Footer() {
                   <FontAwesomeIcon
                     icon={faFacebook}
                     className="text-white p-2 border border-white rounded-circle"
-                    size="md"
+                    size="sm"
                   />
                 </a>
               </li>
@@ -35,7 +35,7 @@ export default function Footer() {
                   <FontAwesomeIcon
                     icon={faTwitter}
                     className="text-white p-2 border border-white rounded-circle"
-                    size="md"
+                    size="sm"
                   />
                 </a>
               </li>
@@ -45,7 +45,7 @@ export default function Footer() {
                   <FontAwesomeIcon
                     icon={faLinkedin}
                     className="text-white p-2 border border-white rounded-circle"
-                    size="md"
+                    size="sm"
                   />
                 </a>
               </li>
@@ -55,7 +55,7 @@ export default function Footer() {
                   <FontAwesomeIcon
                     icon={faGlobe}
                     className="text-white p-2 border border-white rounded-circle"
-                    size="md"
+                    size="sm"
                   />
                 </a>
               </li>

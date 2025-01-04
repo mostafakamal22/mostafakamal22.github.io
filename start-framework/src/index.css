@@ -39,3 +39,29 @@ footer {
 .home {
   background-color: var(--main-color);
 }
+
+.portfolio {
+  color: var(--second-color);
+}
+
+.portfolio-card {
+  cursor: pointer;
+}
+
+.overlay {
+  background-color: var(--main-color);
+  opacity: 0;
+  transition: all 350ms ease-in-out;
+}
+
+.overlay:hover {
+  opacity: 0.9;
+}
+
+.model {
+  z-index: 1500;
+}
+
+.model figure {
+  max-width: 600px;
+}

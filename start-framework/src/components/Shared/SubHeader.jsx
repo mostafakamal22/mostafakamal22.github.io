@@ -5,11 +5,27 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 export default function SubHeader({ color }) {
   return (
     <div className="d-flex align-items-center justify-content-center mb-3 gap-3">
-      <div className={`bg-${color}`} style={{ width: "5rem", height: "5px" }} />
+      <div
+        style={{
+          backgroundColor: `var(${color})`,
+          width: "5rem",
+          height: "5px",
+        }}
+      />
 
-      <FontAwesomeIcon icon={faStar} size="md" className={`text-${color}`} />
+      <FontAwesomeIcon
+        icon={faStar}
+        size="lg"
+        style={{ color: `var(${color})` }}
+      />
 
-      <div className={`bg-${color}`} style={{ width: "5rem", height: "5px" }} />
+      <div
+        style={{
+          backgroundColor: `var(${color})`,
+          width: "5rem",
+          height: "5px",
+        }}
+      />
     </div>
   );
 }

@@ -13,7 +13,7 @@ export default function Home() {
           style={{ maxWidth: "250px" }}
         />
         <Pageheader title={"start Framework"} />
-        <Subheader color={"white"} />
+        <Subheader color={"--bs-white"} />
         <div>Graphic Artist - Web Designer - Illustrator</div>
       </header>
     </section>

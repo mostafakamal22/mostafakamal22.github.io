@@ -7,7 +7,7 @@ export default function About() {
       <div className="container text-center mt-5">
         <PageHeader title="about component" />
 
-        <SubHeader color={"white"} />
+        <SubHeader color={"--bs-white"} />
 
         <div className="row g-4 text-start">
           <div className="col-md-1"></div>
