@@ -65,3 +65,26 @@ footer {
 .model figure {
   max-width: 600px;
 }
+
+.form-control {
+  position: relative;
+  z-index: 5;
+}
+
+.form-control:focus,
+.form-control:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.input-label {
+  position: relative;
+  top: 40px;
+  z-index: 4;
+  color: var(--main-color);
+  transition: all 500ms ease-in-out;
+}
+
+.show-label {
+  top: 0;
+}
