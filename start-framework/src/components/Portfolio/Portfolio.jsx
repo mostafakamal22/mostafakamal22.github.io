@@ -103,7 +103,7 @@ export default function Portfolio() {
       {/* Modal */}
       {currentModalImage && (
         <div className="model position-fixed start-0 w-100 top-0 h-100 bg-primary bg-opacity-25 d-flex justify-content-center align-items-center">
-          <figure>
+          <figure className="p-3">
             <img
               src={currentModalImage.image}
               alt={currentModalImage.title}
