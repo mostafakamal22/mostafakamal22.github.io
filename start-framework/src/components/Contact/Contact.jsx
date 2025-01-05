@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Toaster, toast } from "sonner";
 import PageHeader from "../Shared/PageHeader";
 import SubHeader from "../Shared/SubHeader";
 
@@ -26,6 +27,12 @@ export default function Contact() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(contacts);
+
+    if (!contacts.userName || !contacts.userAge || !contacts.userEmail) {
+      return toast.error("Please fill all fields");
+    }
+
+    toast.success("Message sent successfully");
   };
 
   const { userName, userAge, userEmail } = contacts;
@@ -84,6 +91,8 @@ export default function Contact() {
             Send Message
           </button>
         </form>
+
+        <Toaster richColors expand />
       </div>
     </section>
   );
