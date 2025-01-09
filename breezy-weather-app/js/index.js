@@ -534,17 +534,26 @@ function scrollToElement(element) {
 // Handle my location button click event
 function handleMyLocationClick() {
   if (navigator.geolocation) {
+    // Disable use my location button and add loading state
+    disableMyLocationButtonState();
+
     navigator.geolocation.getCurrentPosition(
       async (position) => {
         const { coords } = position;
 
         await myLocationUIHandler(coords);
+
+        // Reset my location button state
+        resetMyLocationButtonState();
       },
       (error) => {
         // show error message
         locationValidationErrorMessage(
           error?.message || "Unable to retrieve your location."
         );
+
+        // Reset my location button state
+        resetMyLocationButtonState();
       },
       {
         timeout: 5000,
@@ -560,9 +569,6 @@ function handleMyLocationClick() {
 
 // My Location UI Handler
 async function myLocationUIHandler(coords) {
-  // Show Loading Spinner
-  toggleLoadingSpinnerModal(true);
-
   // Hide location validation checks
   toggleLocationValidation(false);
 
@@ -587,8 +593,17 @@ async function myLocationUIHandler(coords) {
 
     // Show validation checks
     toggleLocationValidation(true);
-  } finally {
-    // Hide Loading Spinner
-    toggleLoadingSpinnerModal(false);
   }
+}
+
+//Disable my location button state and add loading state
+function disableMyLocationButtonState() {
+  myLocationButton.classList.add("disabled");
+  myLocationButton.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...`;
+}
+
+//Reset my location button state
+function resetMyLocationButtonState() {
+  myLocationButton.classList.remove("disabled");
+  myLocationButton.innerHTML = "Use My Location";
 }
