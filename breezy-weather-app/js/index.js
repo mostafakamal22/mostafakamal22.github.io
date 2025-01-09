@@ -16,6 +16,9 @@ const locationForecastRow = document.querySelector("#location-forecast .row");
 
 const popularCitiesTitle = document.querySelector("#popular-cities h2");
 const popularCitiesRow = document.querySelector("#popular-cities .row");
+
+const myLocationButton = document.getElementById("my-location-btn");
+
 const POPULAR_CITIES = [
   {
     id: 683802,
@@ -124,6 +127,8 @@ document.addEventListener("DOMContentLoaded", async function () {
   }
 });
 
+myLocationButton.addEventListener("click", handleMyLocationClick);
+
 // validation location input
 function isValidLocation(location) {
   if (!location || location.length < 3) return false;
@@ -224,12 +229,14 @@ function loadingLocationsResults() {
 }
 
 // Fetch location forecast
-async function fetchLocationForecast(locationID, isCurrentWeatherOnly) {
-  if (!locationID) return null;
+async function fetchLocationForecast(locationData, isCurrentWeatherOnly) {
+  if (!locationData) return null;
 
   const URL = isCurrentWeatherOnly
-    ? `${API_BASE_URL}current.json?key=${API_KEY}&q=id:${locationID}&aqi=no`
-    : `${API_BASE_URL}forecast.json?key=${API_KEY}&q=id:${locationID}&days=3&aqi=no&alerts=no`;
+    ? `${API_BASE_URL}current.json?key=${API_KEY}&q=id:${locationData}&aqi=no`
+    : typeof locationData !== "object"
+    ? `${API_BASE_URL}forecast.json?key=${API_KEY}&q=id:${locationData}&days=3&aqi=no&alerts=no`
+    : `${API_BASE_URL}forecast.json?key=${API_KEY}&q=${locationData?.latitude},${locationData?.longitude}&days=3&aqi=no&alerts=no`;
 
   const res = await fetch(URL);
 
@@ -507,4 +514,66 @@ function scrollToElement(element) {
   element.scrollIntoView({
     behavior: "smooth",
   });
+}
+
+// Handle my location button click event
+function handleMyLocationClick() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const { coords } = position;
+
+        await myLocationUIHandler(coords);
+      },
+      (error) => {
+        // show error message
+        locationValidationErrorMessage(
+          error?.message || "Unable to retrieve your location."
+        );
+      },
+      {
+        timeout: 5000,
+      }
+    );
+  } else {
+    // show error message
+    locationValidationErrorMessage(
+      "Geolocation is not supported by this browser."
+    );
+  }
+}
+
+// My Location UI Handler
+async function myLocationUIHandler(coords) {
+  // Show Loading Spinner
+  toggleLoadingSpinnerModal(true);
+
+  // Hide location validation checks
+  toggleLocationValidation(false);
+
+  // Clear location input value
+  locationInput.value = "";
+
+  // Remove locations list results
+  removeLocationsResults();
+
+  //fetch location forecast data
+  try {
+    const locationForecastData = await fetchLocationForecast(coords, false);
+
+    // Show forecast data result on UI
+    showLocationForecast(locationForecastData);
+
+    // Scroll to location forecast section
+    scrollToElement(searchLocationSection);
+  } catch (error) {
+    // Show error message
+    locationValidationErrorMessage(error?.message);
+
+    // Show validation checks
+    toggleLocationValidation(true);
+  } finally {
+    // Hide Loading Spinner
+    toggleLoadingSpinnerModal(false);
+  }
 }
