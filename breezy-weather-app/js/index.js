@@ -534,6 +534,15 @@ function scrollToElement(element) {
 // Handle my location button click event
 function handleMyLocationClick() {
   if (navigator.geolocation) {
+    // Hide location validation checks
+    toggleLocationValidation(false);
+
+    // Clear location input value
+    locationInput.value = "";
+
+    // Remove locations list results
+    removeLocationsResults();
+
     // Disable use my location button and add loading state
     disableMyLocationButtonState();
 
@@ -547,10 +556,27 @@ function handleMyLocationClick() {
         resetMyLocationButtonState();
       },
       (error) => {
-        // show error message
-        locationValidationErrorMessage(
-          error?.message || "Unable to retrieve your location."
-        );
+        // Check error code
+        if (error.code === error.PERMISSION_DENIED) {
+          locationValidationErrorMessage(
+            "Location permission denied. Please enable it in your browser settings."
+          );
+        } else if (error.code === error.POSITION_UNAVAILABLE) {
+          locationValidationErrorMessage(
+            "Location information is unavailable."
+          );
+        } else if (error.code === error.TIMEOUT) {
+          locationValidationErrorMessage(
+            "The request to get user location timed out."
+          );
+        } else {
+          locationValidationErrorMessage(
+            error?.message || "An unknown error occurred."
+          );
+        }
+
+        // Show validation checks
+        toggleLocationValidation(true);
 
         // Reset my location button state
         resetMyLocationButtonState();
@@ -564,22 +590,16 @@ function handleMyLocationClick() {
     locationValidationErrorMessage(
       "Geolocation is not supported by this browser."
     );
+
+    // Show validation checks
+    toggleLocationValidation(true);
   }
 }
 
 // My Location UI Handler
 async function myLocationUIHandler(coords) {
-  // Hide location validation checks
-  toggleLocationValidation(false);
-
-  // Clear location input value
-  locationInput.value = "";
-
-  // Remove locations list results
-  removeLocationsResults();
-
-  //fetch location forecast data
   try {
+    //fetch location forecast data
     const locationForecastData = await fetchLocationForecast(coords, false);
 
     // Show forecast data result on UI
