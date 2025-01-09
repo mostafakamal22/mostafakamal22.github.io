@@ -22,6 +22,10 @@
     <!-- Bootstrap Stylesheet -->
     <link rel="stylesheet" href="./styles/bootstrap.min.css" />
 
+    <!-- Owl Carousel Stylesheets -->
+    <link rel="stylesheet" href="./styles/lib/owl.carousel.min.css" />
+    <link rel="stylesheet" href="./styles/lib/owl.theme.default.min.css" />
+
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="./styles/index.css" />
   </head>
@@ -40,9 +44,9 @@
       <!-- Popular Cities -->
       <section id="popular-cities" class="py-2 py-md-4 mt-4">
         <h2 class="text-uppercase fs-4 main-title mb-4"></h2>
-        <div class="row flex-nowrap g-3 overflow-x-scroll pb-4"></div>
+        <div class="pb-4 owl-carousel"></div>
+        <!-- row flex-nowrap g-3 overflow-x-scroll  -->
       </section>
-
       <!-- Search location -->
       <section id="search-location" class="pt-4">
         <header>
@@ -78,8 +82,6 @@
         </form>
 
         <div class="mt-1">
-           
-
           <div class="d-flex justify-content-between align-items-center">
             <hr class="flex-grow-1" />
             <span class="mx-2 text-uppercase">or</span>
@@ -92,6 +94,7 @@
           >
             Use my location
           </button>
+        </div>
       </section>
 
       <!-- Location Forecast -->
@@ -145,6 +148,9 @@
 
     <!-- Fontawesome Scripts -->
     <script src="./js/lib/font-awesome.js"></script>
+
+    <!-- Owl Carousel Scripts -->
+    <script src="./js/lib/owl.carousel.min.js"></script>
 
     <!-- Main Script -->
     <script src="./js/index.js"></script>

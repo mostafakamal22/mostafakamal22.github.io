@@ -15,7 +15,9 @@ const locationForecastTitle = document.querySelector("#location-forecast h2");
 const locationForecastRow = document.querySelector("#location-forecast .row");
 
 const popularCitiesTitle = document.querySelector("#popular-cities h2");
-const popularCitiesRow = document.querySelector("#popular-cities .row");
+const popularCitiesRow = document.querySelector(
+  "#popular-cities .owl-carousel"
+);
 
 const myLocationButton = document.getElementById("my-location-btn");
 
@@ -65,6 +67,7 @@ const POPULAR_CITIES = [
 const loadingSpinnerModal = new bootstrap.Modal("#loadingSpinnerModal");
 
 // Events handlers
+
 locationInput.addEventListener("input", async function (e) {
   // check location validation
   if (isValidLocation(e.target?.value)) {
@@ -407,7 +410,7 @@ function showPopularCitiesCurrentWeather(popularCitiesWeather) {
     const condition_icon = current?.condition?.icon;
 
     const currentWeatherCol = document.createElement("div");
-    currentWeatherCol.classList.add("col-7", "col-md-4");
+    // currentWeatherCol.classList.add("col-7", "col-md-4");
     currentWeatherCol.innerHTML = ` 
            <div
       style="--icon-src: url('https:${condition_icon}')"
@@ -472,6 +475,18 @@ function showPopularCitiesCurrentWeather(popularCitiesWeather) {
 
   popularCitiesTitle.innerHTML = `Popular Cities Now`;
   popularCitiesRow.replaceChildren(fragment);
+
+  // Initialize Owl Carousel
+  //define how many items based on screen size
+  const items = window.innerWidth > 768 ? 4 : window.innerWidth > 450 ? 2 : 1;
+  $(".owl-carousel").owlCarousel({
+    items,
+    loop: true,
+    margin: 10,
+    autoplay: true,
+    autoplayTimeout: 2500,
+    autoplayHoverPause: true,
+  });
 }
 
 // Remove locations list results
