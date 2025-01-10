@@ -382,9 +382,18 @@ function showLocationForecast(locationForecastData) {
   const locationForecastTitle = document.createElement("h2");
   locationForecastTitle.classList.add(
     "text-uppercase",
-    "mb-4",
+    "fs-5",
     "main-title",
-    "fs-5"
+    "mb-4",
+    "bg-glass",
+    "px-2",
+    "py-2",
+    "border-0",
+    "border-start",
+    "border-4",
+    "border-primary-subtle",
+    "shadow-lg",
+    "rounded-1"
   );
   locationForecastTitle.innerHTML = `[${name}, ${country}] Forecast`;
 
