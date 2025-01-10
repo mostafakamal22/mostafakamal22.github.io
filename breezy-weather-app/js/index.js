@@ -418,8 +418,8 @@ function showPopularCitiesCurrentWeather(popularCitiesWeather) {
       aria-label="Weather card showing ${name} conditions"
     >
       <div class="card-body">
-        <div class="d-flex gap-2 justify-content-between">
-          <div class="w-75">
+        <div class="d-flex gap-1 gap-md-2 justify-content-between">
+          <div class="w-50">
             <h2
               class="card-title fw-semibold d-flex align-items-center"
               aria-label="Temperature: ${temp_c} degrees Celsius"
@@ -430,11 +430,11 @@ function showPopularCitiesCurrentWeather(popularCitiesWeather) {
                 >C</span
               >
             </h2>
-            <p class="card-text" aria-label="Location: ${name}">${name}</p>
+            <p class="card-text text-truncate" aria-label="Location: ${name}">${name}</p>
           </div>
 
           <h3
-            class="fw-bold fs-6 text-capitalize text-primary-emphasis main-title"
+            class="fw-bold fs-6 text-capitalize text-primary-emphasis main-title text-truncate"
             aria-label="Condition: ${condition_text}"
           >
             ${condition_text}
@@ -442,7 +442,7 @@ function showPopularCitiesCurrentWeather(popularCitiesWeather) {
         </div>
 
         <div
-          class="w-75 d-flex gap-2 gap-md-3 flex-wrap fs-6 fw-semibold mt-4 pt-4 border-top border-primary-subtle"
+          class="w-75 d-flex gap-1 gap-md-3 flex-wrap responsive-text fw-semibold mt-4 pt-4 border-top border-primary-subtle"
           aria-label="Additional weather details"
         >
           <div aria-label="Cloud coverage: ${cloud}%">
@@ -464,7 +464,7 @@ function showPopularCitiesCurrentWeather(popularCitiesWeather) {
               class="fa-solid fa-wind text-primary-emphasis"
               aria-hidden="true"
             ></i>
-            ${wind_kph}<span class="fs-6" aria-hidden="true">Km&sol;h</span>
+            ${wind_kph}<span  aria-hidden="true">Km&sol;h</span>
           </div>
         </div>
       </div>
@@ -477,15 +477,26 @@ function showPopularCitiesCurrentWeather(popularCitiesWeather) {
   popularCitiesRow.replaceChildren(fragment);
 
   // Initialize Owl Carousel
-  //define how many items based on screen size
-  const items = window.innerWidth > 768 ? 4 : window.innerWidth > 450 ? 2 : 1;
-  $(".owl-carousel").owlCarousel({
-    items,
+  $(".popular-cities-carousel").owlCarousel({
     loop: true,
     margin: 10,
     autoplay: true,
     autoplayTimeout: 2500,
     autoplayHoverPause: true,
+    responsive: {
+      0: {
+        items: 1.3,
+      },
+      500: {
+        items: 2.5,
+      },
+      768: {
+        items: 3,
+      },
+      992: {
+        items: 4,
+      },
+    },
   });
 }
 
