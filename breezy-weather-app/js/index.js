@@ -13,10 +13,7 @@ const locationValidationContainer = document.querySelector(
 
 const locationForecastContainer = document.querySelector("#location-forecast");
 
-const popularCitiesTitle = document.querySelector("#popular-cities h2");
-const popularCitiesRow = document.querySelector(
-  "#popular-cities .owl-carousel"
-);
+const popularCitiesContainer = document.querySelector("#popular-cities");
 
 const myLocationButton = document.getElementById("my-location-btn");
 
@@ -512,8 +509,37 @@ function showPopularCitiesCurrentWeather(popularCitiesWeather) {
     fragment.appendChild(currentWeatherCol);
   }
 
+  const popularCitiesCarousel = document.createElement("div");
+  popularCitiesCarousel.classList.add(
+    "owl-carousel",
+    "popular-cities-carousel"
+  );
+
+  popularCitiesCarousel.appendChild(fragment);
+
+  const popularCitiesTitle = document.createElement("h2");
+  popularCitiesTitle.classList.add(
+    "text-uppercase",
+    "fs-5",
+    "main-title",
+    "mb-4",
+    "bg-glass",
+    "px-2",
+    "py-2",
+    "border-0",
+    "border-start",
+    "border-4",
+    "border-primary-subtle",
+    "shadow-lg",
+    "rounded-1"
+  );
   popularCitiesTitle.innerHTML = `Popular Cities Now`;
-  popularCitiesRow.replaceChildren(fragment);
+
+  popularCitiesContainer.replaceChildren(
+    popularCitiesTitle,
+
+    popularCitiesCarousel
+  );
 
   // Initialize Owl Carousel
   $(".popular-cities-carousel").owlCarousel({
