@@ -63,7 +63,6 @@ const POPULAR_CITIES = [
 const loadingSpinnerModal = new bootstrap.Modal("#loadingSpinnerModal");
 
 // Events handlers
-
 locationInput.addEventListener("input", async function (e) {
   // check location validation
   if (isValidLocation(e.target?.value)) {
@@ -645,19 +644,19 @@ function handleMyLocationClick() {
         // Check error code
         if (error.code === error.PERMISSION_DENIED) {
           locationValidationErrorMessage(
-            "Location permission denied. Please enable it in your browser settings."
+            "We need your location to provide accurate weather updates. Please enable location services in your browser settings."
           );
         } else if (error.code === error.POSITION_UNAVAILABLE) {
           locationValidationErrorMessage(
-            "Location information is unavailable."
+            "We couldn't determine your location. Please check your internet connection or try again later."
           );
         } else if (error.code === error.TIMEOUT) {
           locationValidationErrorMessage(
-            "The request to get user location timed out."
+            "It took too long to get your location. Please try again."
           );
         } else {
           locationValidationErrorMessage(
-            error?.message || "An unknown error occurred."
+            error?.message || "Something went wrong. Please try again."
           );
         }
 
