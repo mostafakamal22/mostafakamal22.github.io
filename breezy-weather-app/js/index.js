@@ -269,7 +269,6 @@ function showLocationForecast(locationForecastData) {
   const condition_icon = current?.condition?.icon;
 
   const currentWeatherCol = document.createElement("div");
-  // currentWeatherCol.classList.add("col-md-4");
   currentWeatherCol.innerHTML = ` 
                 <div 
         style='--icon-src: url("https:${condition_icon}")' 
@@ -337,7 +336,6 @@ function showLocationForecast(locationForecastData) {
     const condition_icon = forecastday[i]?.day?.condition?.icon;
 
     const forecastCol = document.createElement("div");
-    // forecastCol.classList.add("col-md-4");
     forecastCol.innerHTML = ` 
                       <div 
             style='--icon-src: url("https:${condition_icon}")' 
@@ -410,6 +408,7 @@ function showLocationForecast(locationForecastData) {
     loop: false,
     autoplay: false,
     margin: 10,
+    dots: false,
     responsive: {
       0: {
         items: 1.3,
@@ -451,7 +450,6 @@ function showPopularCitiesCurrentWeather(popularCitiesWeather) {
     const condition_icon = current?.condition?.icon;
 
     const currentWeatherCol = document.createElement("div");
-    // currentWeatherCol.classList.add("col-7", "col-md-4");
     currentWeatherCol.innerHTML = ` 
            <div
       style="--icon-src: url('https:${condition_icon}')"
@@ -524,6 +522,7 @@ function showPopularCitiesCurrentWeather(popularCitiesWeather) {
     autoplay: true,
     autoplayTimeout: 2500,
     autoplayHoverPause: true,
+    dots: false,
     responsive: {
       0: {
         items: 1.3,

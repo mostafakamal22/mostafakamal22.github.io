@@ -39,66 +39,60 @@
           <h1 class="text-center text-uppercase fw-bold">Breezy</h1>
           <p class="desc">Simple and smooth weather insights.</p>
         </header>
+
+        <!-- Search location -->
+        <div id="search-location" class="pt-4">
+          <form class="d-flex gap-2">
+            <div class="w-100 position-relative">
+              <input
+                type="text"
+                id="location"
+                name="location"
+                aria-label="location"
+                class="form-control"
+                placeholder="Enter a Location..."
+              />
+
+              <!-- Locations List -->
+              <ul
+                id="locations-list"
+                class="position-relative bottom-0 w-100 list-group mt-1 fw-light"
+              ></ul>
+
+              <!-- Location Validation -->
+              <div class="mt-1 location-validation">
+                <div
+                  class="text-bg-danger p-2 rounded d-flex align-items-center d-none"
+                ></div>
+              </div>
+            </div>
+          </form>
+
+          <div class="mt-1">
+            <div class="d-flex justify-content-between align-items-center">
+              <hr class="flex-grow-1" />
+              <span class="mx-2 text-uppercase">or</span>
+              <hr class="flex-grow-1" />
+            </div>
+
+            <button
+              id="my-location-btn"
+              class="btn btn-primary w-100 border border-white text-uppercase mt-1"
+            >
+              Use my location
+            </button>
+          </div>
+        </div>
+
+        <!-- Location Forecast -->
+        <div id="location-forecast" class="py-2 py-md-4 mt-2"></div>
       </section>
 
       <!-- Popular Cities -->
       <section id="popular-cities" class="py-2 py-md-4 mt-4">
         <h2 class="text-uppercase fs-4 main-title mb-4"></h2>
-        <div class="pb-4 owl-carousel popular-cities-carousel"></div>
+        <div class="owl-carousel popular-cities-carousel"></div>
       </section>
-
-      <!-- Search location -->
-      <section id="search-location" class="pt-4">
-        <header>
-          <h2 class="text-uppercase fs-4 main-title mb-4">
-            Your Weather, One Location Away
-          </h2>
-        </header>
-
-        <form class="d-flex gap-2">
-          <div class="w-100 position-relative">
-            <input
-              type="text"
-              id="location"
-              name="location"
-              aria-label="location"
-              class="form-control"
-              placeholder="Enter a Location..."
-            />
-
-            <!-- Locations List -->
-            <ul
-              id="locations-list"
-              class="position-relative bottom-0 w-100 list-group mt-1 fw-light"
-            ></ul>
-
-            <!-- Location Validation -->
-            <div class="mt-1 location-validation">
-              <div
-                class="text-bg-danger p-2 rounded d-flex align-items-center d-none"
-              ></div>
-            </div>
-          </div>
-        </form>
-
-        <div class="mt-1">
-          <div class="d-flex justify-content-between align-items-center">
-            <hr class="flex-grow-1" />
-            <span class="mx-2 text-uppercase">or</span>
-            <hr class="flex-grow-1" />
-          </div>
-
-          <button
-            id="my-location-btn"
-            class="btn btn-primary w-100 border border-white text-uppercase mt-1"
-          >
-            Use my location
-          </button>
-        </div>
-      </section>
-
-      <!-- Location Forecast -->
-      <section id="location-forecast" class="py-2 py-md-4 mt-2"></section>
 
       <!-- Loading Spinner Modal -->
       <div
