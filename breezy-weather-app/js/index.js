@@ -2,7 +2,7 @@
 const API_KEY = "f64196fb2874411787b184022241012";
 const API_BASE_URL = "https://api.weatherapi.com/v1/";
 
-const searchLocationSection = document.getElementById("search-location");
+const locationForecastSection = document.getElementById("location-forecast");
 const locationInput = document.getElementById("location");
 const locationsListGroup = document.getElementById("locations-list");
 const locationListItem = document.querySelectorAll(".list-group-item");
@@ -191,7 +191,7 @@ function showLocationsList(locationsList) {
         showLocationForecast(locationForecastData);
 
         // Scroll to location forecast section
-        scrollToElement(searchLocationSection);
+        scrollToElement(locationForecastSection);
       } catch (error) {
         // Show error message
         locationValidationErrorMessage(error?.message);
@@ -692,7 +692,7 @@ async function myLocationUIHandler(coords) {
     showLocationForecast(locationForecastData);
 
     // Scroll to location forecast section
-    scrollToElement(searchLocationSection);
+    scrollToElement(locationForecastSection);
   } catch (error) {
     // Show error message
     locationValidationErrorMessage(error?.message);
