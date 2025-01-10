@@ -11,8 +11,7 @@ const locationValidationContainer = document.querySelector(
   ".location-validation div"
 );
 
-const locationForecastTitle = document.querySelector("#location-forecast h2");
-const locationForecastRow = document.querySelector("#location-forecast .row");
+const locationForecastContainer = document.querySelector("#location-forecast");
 
 const popularCitiesTitle = document.querySelector("#popular-cities h2");
 const popularCitiesRow = document.querySelector(
@@ -270,7 +269,7 @@ function showLocationForecast(locationForecastData) {
   const condition_icon = current?.condition?.icon;
 
   const currentWeatherCol = document.createElement("div");
-  currentWeatherCol.classList.add("col-md-4");
+  // currentWeatherCol.classList.add("col-md-4");
   currentWeatherCol.innerHTML = ` 
                 <div 
         style='--icon-src: url("https:${condition_icon}")' 
@@ -290,7 +289,7 @@ function showLocationForecast(locationForecastData) {
             </div>
 
             <h3 
-              class="fw-bold fs-5 text-capitalize text-primary-emphasis main-title" 
+              class="fw-bold fs-6 text-capitalize text-primary-emphasis main-title text-truncate" 
               aria-label="Weather condition: ${condition_text}"
             >
               ${condition_text}
@@ -298,7 +297,7 @@ function showLocationForecast(locationForecastData) {
           </div>
 
           <div 
-            class="w-75 d-flex gap-3 fs-6 fw-semibold mt-4 pt-4 border-top border-primary-subtle" 
+            class="w-75 d-flex gap-1 gap-md-3 flex-wrap fw-semibold mt-4 pt-4 border-top border-primary-subtle responsive-text" 
             aria-label="Additional weather details"
           >
             <div aria-label="Cloud cover: ${cloud}%">
@@ -308,7 +307,7 @@ function showLocationForecast(locationForecastData) {
               <i class="fa-solid fa-droplet text-primary-emphasis" aria-hidden="true"></i> ${humidity}%
             </div>
             <div aria-label="Wind speed: ${wind_kph} kilometers per hour">
-              <i class="fa-solid fa-wind text-primary-emphasis" aria-hidden="true"></i> ${wind_kph}<span class="fs-6" aria-hidden="true">Km&sol;h</span>
+              <i class="fa-solid fa-wind text-primary-emphasis" aria-hidden="true"></i> ${wind_kph}<span aria-hidden="true">Km&sol;h</span>
             </div>
           </div>
         </div>
@@ -338,7 +337,7 @@ function showLocationForecast(locationForecastData) {
     const condition_icon = forecastday[i]?.day?.condition?.icon;
 
     const forecastCol = document.createElement("div");
-    forecastCol.classList.add("col-md-4");
+    // forecastCol.classList.add("col-md-4");
     forecastCol.innerHTML = ` 
                       <div 
             style='--icon-src: url("https:${condition_icon}")' 
@@ -354,11 +353,11 @@ function showLocationForecast(locationForecastData) {
                   >
                     ${avgtemp_c}&deg;<span class="fs-6 text-primary-emphasis" aria-hidden="true">C</span>
                   </h2>
-                  <p class="card-text" aria-label="Day: ${day}">${day}</p>
+                  <p class="card-text text-truncate" aria-label="Day: ${day}">${day}</p>
                 </div>
 
                 <h3 
-                  class="fw-bold fs-5 text-capitalize text-primary-emphasis main-title" 
+                  class="fw-bold fs-6 text-capitalize text-primary-emphasis main-title text-truncate" 
                   aria-label="Condition: ${condition_text}"
                 >
                   ${condition_text}
@@ -366,7 +365,7 @@ function showLocationForecast(locationForecastData) {
               </div>
 
               <div 
-                class="w-75 d-flex gap-3 fs-6 fw-semibold mt-4 pt-4 border-top border-primary-subtle" 
+                class="w-75 d-flex gap-1 gap-md-3 flex-wrap responsive-text fw-semibold mt-4 pt-4 border-top border-primary-subtle" 
                 aria-label="Additional weather details"
               >
                 <div aria-label="Daily chance of rain: ${daily_chance_of_rain}%">
@@ -376,7 +375,7 @@ function showLocationForecast(locationForecastData) {
                   <i class="fa-solid fa-droplet text-primary-emphasis" aria-hidden="true"></i> ${avghumidity}%
                 </div>
                 <div aria-label="Maximum wind speed: ${maxwind_kph} kilometers per hour">
-                  <i class="fa-solid fa-wind text-primary-emphasis" aria-hidden="true"></i> ${maxwind_kph}<span class="fs-6" aria-hidden="true">Km&sol;h</span>
+                  <i class="fa-solid fa-wind text-primary-emphasis" aria-hidden="true"></i> ${maxwind_kph}<span aria-hidden="true">Km&sol;h</span>
                 </div>
               </div>
             </div>
@@ -385,8 +384,50 @@ function showLocationForecast(locationForecastData) {
     fragment.appendChild(forecastCol);
   }
 
+  const locationForecastTitle = document.createElement("h2");
+  locationForecastTitle.classList.add(
+    "text-uppercase",
+    "mb-4",
+    "main-title",
+    "fs-5"
+  );
   locationForecastTitle.innerHTML = `[${name}, ${country}] Forecast`;
-  locationForecastRow.replaceChildren(fragment);
+
+  const locationForecastCarousel = document.createElement("div");
+  locationForecastCarousel.classList.add(
+    "owl-carousel",
+    "location-forecast-carousel"
+  );
+  locationForecastCarousel.appendChild(fragment);
+
+  locationForecastContainer.replaceChildren(
+    locationForecastTitle,
+    locationForecastCarousel
+  );
+
+  // Initialize Owl Carousel
+  $(".location-forecast-carousel").owlCarousel({
+    loop: false,
+    autoplay: false,
+    margin: 10,
+    responsive: {
+      0: {
+        items: 1.3,
+        loop: true,
+      },
+      500: {
+        items: 2.5,
+        loop: true,
+      },
+      768: {
+        items: 3,
+        loop: true,
+      },
+      992: {
+        items: 4,
+      },
+    },
+  });
 }
 
 // Show popular cities current weather
