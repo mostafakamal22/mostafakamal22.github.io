@@ -128,7 +128,7 @@ section {
   font-weight: 300;
   color: white;
   padding: 12px 0;
-  transition-duration: 350ms;
+  transition: all 350ms;
 }
 
 .header__menu-item:hover .header__menu-item-link {
