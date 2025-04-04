@@ -1,1 +1,1 @@
-Javascripts problems solving
+Javascript problems solving
